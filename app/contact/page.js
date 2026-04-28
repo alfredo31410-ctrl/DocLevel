@@ -38,7 +38,7 @@ export default function ContactPage() {
       <Navbar />
       <div className="pt-28 pb-20 px-4 md:px-8 max-w-3xl mx-auto">
         <div className="mb-10">
-          <div className="inline-flex items-center gap-2 text-red-500 mb-3">
+          <div className="inline-flex items-center gap-2 text-teal-500 mb-3">
             <Mail className="w-5 h-5" />
             <span className="text-sm uppercase tracking-widest font-bold">Contacto</span>
           </div>
@@ -79,7 +79,7 @@ export default function ContactPage() {
               className="bg-zinc-950 border-zinc-800 text-white"
             />
           </div>
-          <Button type="submit" disabled={sending} className="bg-red-600 hover:bg-red-700 text-white w-full md:w-auto">
+          <Button type="submit" disabled={sending} className="bg-teal-600 hover:bg-teal-700 text-white w-full md:w-auto">
             <Send className="w-4 h-4 mr-2" />
             {sending ? 'Enviando...' : 'Enviar mensaje'}
           </Button>

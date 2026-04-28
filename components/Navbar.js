@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Play } from 'lucide-react';
+import { Search, HeartPulse } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const links = [
@@ -17,10 +17,10 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 bg-gradient-to-b from-black/90 via-black/70 to-transparent backdrop-blur-sm">
       <div className="max-w-[1600px] mx-auto flex items-center gap-8 px-4 md:px-8 py-4">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-md bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-900/30 group-hover:scale-105 transition">
-            <Play className="w-4 h-4 text-white fill-white" />
+          <div className="w-9 h-9 rounded-md bg-gradient-to-br from-teal-400 to-blue-600 flex items-center justify-center shadow-lg shadow-teal-900/40 group-hover:scale-105 transition">
+            <HeartPulse className="w-5 h-5 text-white" strokeWidth={2.5} />
           </div>
-          <span className="text-xl md:text-2xl font-bold tracking-tight text-white">Doc<span className="text-red-500">Level</span></span>
+          <span className="text-xl md:text-2xl font-bold tracking-tight text-white">Doc<span className="text-teal-400">Level</span></span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (

@@ -46,14 +46,14 @@ export default async function CoursePage({ params }) {
 
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="flex-1">
-            <div className="inline-block text-xs uppercase tracking-widest bg-red-600 text-white font-bold px-2.5 py-1 rounded mb-4">
+            <div className="inline-block text-xs uppercase tracking-widest bg-teal-600 text-white font-bold px-2.5 py-1 rounded mb-4">
               {course.category}
             </div>
             <h1 className="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">{course.title}</h1>
             <p className="text-lg text-zinc-300 leading-relaxed mb-6">{course.description}</p>
             {course.content && (
               <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-                <h2 className="text-sm uppercase tracking-widest text-red-500 font-bold mb-3">Recursos adicionales</h2>
+                <h2 className="text-sm uppercase tracking-widest text-teal-500 font-bold mb-3">Recursos adicionales</h2>
                 <p className="text-zinc-300 whitespace-pre-wrap">{course.content}</p>
               </div>
             )}
@@ -66,8 +66,8 @@ export default async function CoursePage({ params }) {
                   <Link key={r.id} href={`/courses/${r.id}`} className="flex gap-3 group bg-zinc-900/50 hover:bg-zinc-900 rounded-lg p-2 transition">
                     <img src={r.banner_url} alt={r.title} className="w-28 h-16 object-cover rounded flex-shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[10px] uppercase tracking-widest text-red-500 font-semibold">{r.category}</div>
-                      <div className="text-sm text-white group-hover:text-red-400 line-clamp-2 leading-snug">{r.title}</div>
+                      <div className="text-[10px] uppercase tracking-widest text-teal-500 font-semibold">{r.category}</div>
+                      <div className="text-sm text-white group-hover:text-teal-400 line-clamp-2 leading-snug">{r.title}</div>
                     </div>
                   </Link>
                 ))}

@@ -29,7 +29,7 @@ export function CourseCard({ course, size = 'md' }) {
         </div>
       </div>
       <div className="p-3">
-        <div className="text-[11px] uppercase tracking-widest text-red-500 font-semibold mb-1">{course.category}</div>
+        <div className="text-[11px] uppercase tracking-widest text-teal-500 font-semibold mb-1">{course.category}</div>
         <h3 className="text-sm md:text-base font-semibold text-white line-clamp-2 leading-snug">{course.title}</h3>
       </div>
     </Link>

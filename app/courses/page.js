@@ -94,11 +94,11 @@ export default function CoursesPage() {
               <Link
                 key={c.id}
                 href={`/courses/${c.id}`}
-                className="group bg-zinc-900 rounded-lg overflow-hidden hover:ring-2 hover:ring-red-500/60 transition"
+                className="group bg-zinc-900 rounded-lg overflow-hidden hover:ring-2 hover:ring-teal-500/60 transition"
               >
                 <div className="aspect-video relative overflow-hidden">
                   <img src={c.banner_url} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                  <div className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-red-600 text-white font-bold px-2 py-1 rounded">
+                  <div className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-teal-600 text-white font-bold px-2 py-1 rounded">
                     {c.category}
                   </div>
                 </div>

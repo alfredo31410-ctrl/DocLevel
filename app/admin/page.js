@@ -107,8 +107,8 @@ export default function AdminPage() {
         <div className="pt-28 pb-20 px-4 flex justify-center">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-600/20 border border-red-500/40 mb-4">
-                <Lock className="w-6 h-6 text-red-500" />
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-teal-600/20 border border-teal-500/40 mb-4">
+                <Lock className="w-6 h-6 text-teal-500" />
               </div>
               <h1 className="text-3xl font-black text-white">Panel de Administración</h1>
               <p className="text-zinc-500 mt-2">Inicia sesión para gestionar cursos</p>
@@ -126,7 +126,7 @@ export default function AdminPage() {
                   onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                   className="bg-zinc-950 border-zinc-800 text-white h-11" />
               </div>
-              <Button type="submit" disabled={loading} className="w-full bg-red-600 hover:bg-red-700 text-white h-11">
+              <Button type="submit" disabled={loading} className="w-full bg-teal-600 hover:bg-teal-700 text-white h-11">
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Iniciar sesión'}
               </Button>
               <p className="text-xs text-zinc-500 text-center pt-2">Demo: admin@doclevel.com / admin123</p>
@@ -147,7 +147,7 @@ export default function AdminPage() {
             <p className="text-zinc-500 mt-1">{courses.length} curso{courses.length !== 1 && 's'} en total</p>
           </div>
           <div className="flex gap-2">
-            <Button onClick={openCreate} className="bg-red-600 hover:bg-red-700 text-white">
+            <Button onClick={openCreate} className="bg-teal-600 hover:bg-teal-700 text-white">
               <Plus className="w-4 h-4 mr-2" /> Nuevo curso
             </Button>
             <Button variant="outline" onClick={logout} className="border-zinc-700 text-zinc-300 bg-transparent hover:bg-zinc-900">
@@ -182,11 +182,11 @@ export default function AdminPage() {
                 </div>
                 <div className="col-span-3 md:col-span-3 text-sm text-zinc-300">{c.category}</div>
                 <div className="hidden md:block md:col-span-2">
-                  {c.featured ? <span className="text-xs bg-red-600/20 text-red-400 border border-red-500/30 px-2 py-1 rounded">Destacado</span> : <span className="text-xs text-zinc-600">—</span>}
+                  {c.featured ? <span className="text-xs bg-teal-600/20 text-teal-400 border border-teal-500/30 px-2 py-1 rounded">Destacado</span> : <span className="text-xs text-zinc-600">—</span>}
                 </div>
                 <div className="col-span-3 md:col-span-2 flex justify-end gap-1">
                   <Button size="icon" variant="ghost" onClick={() => openEdit(c)} className="text-zinc-400 hover:text-white"><Pencil className="w-4 h-4" /></Button>
-                  <Button size="icon" variant="ghost" onClick={() => setDeleteTarget(c)} className="text-zinc-400 hover:text-red-500"><Trash2 className="w-4 h-4" /></Button>
+                  <Button size="icon" variant="ghost" onClick={() => setDeleteTarget(c)} className="text-zinc-400 hover:text-teal-500"><Trash2 className="w-4 h-4" /></Button>
                 </div>
               </div>
             ))}
@@ -255,7 +255,7 @@ export default function AdminPage() {
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setEditOpen(false)}
                 className="border-zinc-700 text-zinc-300 bg-transparent hover:bg-zinc-900">Cancelar</Button>
-              <Button type="submit" disabled={loading} className="bg-red-600 hover:bg-red-700 text-white">
+              <Button type="submit" disabled={loading} className="bg-teal-600 hover:bg-teal-700 text-white">
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : current.id ? 'Guardar cambios' : 'Crear curso'}
               </Button>
             </DialogFooter>
@@ -274,7 +274,7 @@ export default function AdminPage() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel className="bg-transparent border-zinc-700 text-zinc-300 hover:bg-zinc-900">Cancelar</AlertDialogCancel>
-            <AlertDialogAction onClick={doDelete} className="bg-red-600 hover:bg-red-700 text-white">Eliminar</AlertDialogAction>
+            <AlertDialogAction onClick={doDelete} className="bg-teal-600 hover:bg-teal-700 text-white">Eliminar</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

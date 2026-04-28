@@ -49,7 +49,7 @@ export default async function HomePage() {
           <div className="relative z-10 h-full flex items-end md:items-center pb-20 md:pb-0">
             <div className="max-w-[1600px] mx-auto w-full px-4 md:px-8">
               <div className="max-w-2xl">
-                <div className="inline-block text-xs md:text-sm uppercase tracking-[0.2em] text-red-500 font-bold mb-4 bg-red-500/10 border border-red-500/30 px-3 py-1 rounded-sm">
+                <div className="inline-block text-xs md:text-sm uppercase tracking-[0.2em] text-teal-500 font-bold mb-4 bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-sm">
                   Destacado · {featured.category}
                 </div>
                 <h1 className="text-3xl md:text-6xl font-black text-white leading-tight mb-4 drop-shadow-2xl">
