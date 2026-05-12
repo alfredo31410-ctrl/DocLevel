@@ -4,6 +4,8 @@ import { Play, Info } from 'lucide-react';
 import { CourseRow } from '@/components/CourseCard';
 import { getDb } from '@/lib/mongodb';
 
+export const dynamic = 'force-dynamic';
+
 async function fetchCourses() {
   try {
     const db = await getDb();
