@@ -2,8 +2,8 @@ import './globals.css'
 import { Toaster } from '@/components/ui/sonner'
 
 export const metadata = {
-  title: 'DocLevel - Aprende con video',
-  description: 'Plataforma educativa con cursos en video de fiscal, contabilidad, innovación, marketing y tecnología.',
+  title: 'DocLevel - Cursos médicos impartidos por especialistas',
+  description: 'Plataforma de educación médica digital con cursos impartidos por doctores especialistas para profesionales de la salud.',
 }
 
 export default function RootLayout({ children }) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -35,31 +35,36 @@ export default function CoursesPage() {
   return (
     <div className="min-h-screen bg-black">
       <Navbar />
-      <div className="pt-28 pb-20 px-4 md:px-8 max-w-[1600px] mx-auto">
+      <div className="mx-auto max-w-[1600px] px-4 pb-20 pt-28 md:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl md:text-5xl font-black text-white mb-2">Explora todos los cursos</h1>
-          <p className="text-zinc-400">Encuentra el contenido ideal para potenciar tu carrera.</p>
+          <h1 className="mb-2 text-3xl font-black text-white md:text-5xl">Explora los cursos de DocLevel</h1>
+          <p className="max-w-3xl text-zinc-400">
+            Encuentra cursos médicos creados por doctores especialistas para profesionales de la salud
+            que buscan actualizarse, profundizar y aplicar mejor su conocimiento clínico.
+          </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 mb-8 items-stretch md:items-center">
-          <div className="relative flex-1 max-w-xl">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+        <div className="mb-8 flex flex-col items-stretch gap-4 md:flex-row md:items-center">
+          <div className="relative max-w-xl flex-1">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
             <Input
-              placeholder="Buscar por título, descripción o categoría..."
+              placeholder="Buscar por título, descripción o especialidad..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-10 bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 h-11"
+              className="h-11 border-zinc-800 bg-zinc-900 pl-10 text-white placeholder:text-zinc-500"
             />
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="mb-10 flex flex-wrap gap-2">
           <Button
             variant={category === 'all' ? 'default' : 'outline'}
             onClick={() => setCategory('all')}
             className={cn(
               'rounded-full text-sm',
-              category === 'all' ? 'bg-white text-black hover:bg-zinc-200' : 'border-zinc-700 text-zinc-300 hover:text-white bg-transparent hover:bg-zinc-900'
+              category === 'all'
+                ? 'bg-white text-black hover:bg-zinc-200'
+                : 'border-zinc-700 bg-transparent text-zinc-300 hover:bg-zinc-900 hover:text-white'
             )}
           >
             Todas
@@ -71,7 +76,9 @@ export default function CoursesPage() {
               onClick={() => setCategory(c)}
               className={cn(
                 'rounded-full text-sm',
-                category === c ? 'bg-white text-black hover:bg-zinc-200' : 'border-zinc-700 text-zinc-300 hover:text-white bg-transparent hover:bg-zinc-900'
+                category === c
+                  ? 'bg-white text-black hover:bg-zinc-200'
+                  : 'border-zinc-700 bg-transparent text-zinc-300 hover:bg-zinc-900 hover:text-white'
               )}
             >
               {c}
@@ -81,30 +88,30 @@ export default function CoursesPage() {
 
         {loading ? (
           <div className="flex items-center justify-center py-20 text-zinc-500">
-            <Loader2 className="w-6 h-6 animate-spin" />
+            <Loader2 className="h-6 w-6 animate-spin" />
           </div>
         ) : courses.length === 0 ? (
-          <div className="text-center py-20 text-zinc-500">
+          <div className="py-20 text-center text-zinc-500">
             <p className="text-lg">No se encontraron cursos.</p>
             <p className="text-sm">Intenta con otros términos de búsqueda.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {courses.map((c) => (
               <Link
                 key={c.id}
                 href={`/courses/${c.id}`}
-                className="group bg-zinc-900 rounded-lg overflow-hidden hover:ring-2 hover:ring-teal-500/60 transition"
+                className="group overflow-hidden rounded-lg bg-zinc-900 transition hover:ring-2 hover:ring-teal-500/60"
               >
-                <div className="aspect-video relative overflow-hidden">
-                  <img src={c.banner_url} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                  <div className="absolute top-3 left-3 text-[10px] uppercase tracking-widest bg-teal-600 text-white font-bold px-2 py-1 rounded">
+                <div className="relative aspect-video overflow-hidden">
+                  <img src={c.banner_url} alt={c.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
                     {c.category}
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="text-white font-semibold line-clamp-2 mb-2">{c.title}</h3>
-                  <p className="text-sm text-zinc-400 line-clamp-2">{c.description}</p>
+                  <h3 className="mb-2 line-clamp-2 font-semibold text-white">{c.title}</h3>
+                  <p className="line-clamp-3 text-sm text-zinc-400">{c.description}</p>
                 </div>
               </Link>
             ))}

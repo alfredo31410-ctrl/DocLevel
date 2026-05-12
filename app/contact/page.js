@@ -43,7 +43,7 @@ export default function ContactPage() {
             <span className="text-sm uppercase tracking-widest font-bold">Contacto</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-black text-white mb-3">Hablemos</h1>
-          <p className="text-zinc-400">¿Tienes preguntas, sugerencias o quieres colaborar? Envíanos un mensaje.</p>
+          <p className="text-zinc-400">¿Tienes preguntas sobre un curso o quieres colaborar como doctor instructor? Envíanos un mensaje.</p>
         </div>
 
         <form onSubmit={submit} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 md:p-8 space-y-5">
