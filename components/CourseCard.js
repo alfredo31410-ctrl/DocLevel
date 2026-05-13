@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Play } from 'lucide-react';
+import { Clock, Play } from 'lucide-react';
 
 export function CourseCard({ course, size = 'md' }) {
+  const isComingSoon = course.status === 'coming_soon' || course.coming_soon;
   const widths = {
     sm: 'w-48 md:w-56',
     md: 'w-60 md:w-72',
@@ -22,9 +23,16 @@ export function CourseCard({ course, size = 'md' }) {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-70" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-          <div className="w-14 h-14 rounded-full bg-white/95 flex items-center justify-center shadow-xl">
-            <Play className="w-6 h-6 text-black fill-black ml-1" />
+        <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+          {isComingSoon ? 'Próximamente' : course.category}
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition group-hover:opacity-100">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 shadow-xl">
+            {isComingSoon ? (
+              <Clock className="h-6 w-6 text-black" />
+            ) : (
+              <Play className="ml-1 h-6 w-6 fill-black text-black" />
+            )}
           </div>
         </div>
       </div>

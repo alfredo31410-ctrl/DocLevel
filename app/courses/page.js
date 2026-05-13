@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Loader2 } from 'lucide-react';
+import { Clock, Search, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -98,26 +98,39 @@ export default function CoursesPage() {
         ) : (
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {courses.map((c) => (
-              <Link
-                key={c.id}
-                href={`/courses/${c.id}`}
-                className="group overflow-hidden rounded-lg bg-zinc-900 transition hover:ring-2 hover:ring-teal-500/60"
-              >
-                <div className="relative aspect-video overflow-hidden">
-                  <img src={c.banner_url} alt={c.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                  <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                    {c.category}
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="mb-2 line-clamp-2 font-semibold text-white">{c.title}</h3>
-                  <p className="line-clamp-3 text-sm text-zinc-400">{c.description}</p>
-                </div>
-              </Link>
+              <CourseGridCard key={c.id} course={c} />
             ))}
           </div>
         )}
       </div>
     </div>
+  );
+}
+
+function CourseGridCard({ course }) {
+  const isComingSoon = course.status === 'coming_soon' || course.coming_soon;
+
+  return (
+    <Link
+      href={`/courses/${course.id}`}
+      className="group overflow-hidden rounded-lg bg-zinc-900 transition hover:ring-2 hover:ring-teal-500/60"
+    >
+      <div className="relative aspect-video overflow-hidden">
+        <img src={course.banner_url} alt={course.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+          {course.category}
+        </div>
+        {isComingSoon && (
+          <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded bg-black/75 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
+            <Clock className="h-3 w-3" />
+            Próximamente
+          </div>
+        )}
+      </div>
+      <div className="p-4">
+        <h3 className="mb-2 line-clamp-2 font-semibold text-white">{course.title}</h3>
+        <p className="line-clamp-3 text-sm text-zinc-400">{course.description}</p>
+      </div>
+    </Link>
   );
 }

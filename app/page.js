@@ -30,12 +30,14 @@ export default async function HomePage() {
   }, {});
 
   const categoryOrder = [
+    'Odontología',
+    'Pediatría',
+    'Cardiología',
     'Medicina Interna',
     'Urgencias',
     'Ginecología',
-    'Pediatría',
     'Dermatología',
-    'Educación Médica',
+    'Nutrición Clínica',
   ];
 
   const orderedCats = [

@@ -217,6 +217,7 @@ export async function POST(request, { params }) {
         video_url,
         banner_url,
         content: content || '',
+        status: body.status || 'available',
         featured: !!body.featured,
         created_at: new Date(),
       };
@@ -243,7 +244,7 @@ export async function PUT(request, { params }) {
       if (!auth) return err('No autorizado', 401);
 
       const body = await request.json();
-      const allowed = ['title', 'description', 'category', 'video_url', 'banner_url', 'content', 'featured'];
+      const allowed = ['title', 'description', 'category', 'video_url', 'banner_url', 'content', 'featured', 'status'];
       const update = {};
 
       for (const k of allowed) {

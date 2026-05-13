@@ -30,82 +30,94 @@ if (!uri) {
   process.exit(1);
 }
 
-const now = new Date();
+const now = Date.now();
 
 const courses = [
   {
-    title: 'Urgencias en consultorio: decisiones clínicas que no pueden esperar',
-    description: 'Aprende a identificar, priorizar y actuar ante escenarios frecuentes de urgencia en la práctica médica diaria.',
-    category: 'Urgencias',
+    title: 'Odontología restauradora: diagnóstico y plan de tratamiento',
+    description: 'Curso práctico para ordenar la evaluación clínica, comunicar hallazgos y estructurar tratamientos odontológicos con criterio profesional.',
+    category: 'Odontología',
     video_url: 'https://www.youtube.com/watch?v=QOzH1D4vIfc',
-    banner_url: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1600&q=80',
-    content: 'Incluye abordaje inicial, criterios de referencia, señales de alarma y toma de decisiones en los primeros minutos.',
+    banner_url: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600&q=80',
+    content: 'Incluye diagnóstico inicial, fotografía clínica, criterios de restauración, comunicación con el paciente y seguimiento.',
+    status: 'available',
     featured: true,
   },
   {
-    title: 'Interpretación básica de laboratorio para médicos de primer contacto',
-    description: 'Refuerza la lectura clínica de biometría hemática, química sanguínea y marcadores comunes en consulta.',
-    category: 'Medicina Interna',
-    video_url: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
-    banner_url: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1600&q=80',
-    content: 'Curso enfocado en correlación clínica, patrones frecuentes y errores comunes al interpretar resultados.',
-    featured: false,
-  },
-  {
-    title: 'Actualización en diabetes tipo 2 para la práctica clínica',
-    description: 'Revisa criterios actuales, abordaje terapéutico y seguimiento práctico del paciente con diabetes tipo 2.',
-    category: 'Medicina Interna',
-    video_url: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-    banner_url: 'https://images.unsplash.com/photo-1579154341098-e4e158cc7f55?auto=format&fit=crop&w=1600&q=80',
-    content: 'Incluye metas de control, tratamiento inicial, intensificación terapéutica y educación del paciente.',
-    featured: false,
-  },
-  {
-    title: 'Ginecología práctica: consulta, prevención y criterios de referencia',
-    description: 'Fortalece el abordaje de motivos frecuentes de consulta ginecológica con una visión clara y aplicable.',
-    category: 'Ginecología',
-    video_url: 'https://www.youtube.com/watch?v=kJQP7kiw5Fk',
-    banner_url: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80',
-    content: 'Temas clave: prevención, tamizaje, síntomas frecuentes, comunicación con paciente y referencia oportuna.',
-    featured: false,
-  },
-  {
     title: 'Pediatría esencial: signos de alarma y manejo inicial',
-    description: 'Aprende a reconocer escenarios pediátricos que requieren atención inmediata o seguimiento estrecho.',
+    description: 'Aprende a reconocer escenarios pediátricos que requieren atención inmediata, seguimiento estrecho o referencia oportuna.',
     category: 'Pediatría',
     video_url: 'https://www.youtube.com/watch?v=hqvqOYh5p5g',
     banner_url: 'https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1600&q=80',
-    content: 'Incluye fiebre, dificultad respiratoria, hidratación, dolor abdominal y comunicación con cuidadores.',
+    content: 'Incluye fiebre, dificultad respiratoria, hidratación, dolor abdominal y comunicación clara con madres, padres y cuidadores.',
+    status: 'available',
     featured: false,
   },
   {
-    title: 'Dermatología para consulta general: lesiones frecuentes y banderas rojas',
-    description: 'Distingue lesiones comunes, criterios de alarma y decisiones de tratamiento o referencia dermatológica.',
+    title: 'Cardiología clínica: ECG básico y valoración inicial',
+    description: 'Fortalece la lectura inicial del electrocardiograma y la toma de decisiones ante síntomas cardiovasculares frecuentes.',
+    category: 'Cardiología',
+    video_url: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+    banner_url: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1600&q=80',
+    content: 'Incluye ritmo, frecuencia, intervalos, datos de alarma, dolor torácico, palpitaciones y criterios de referencia.',
+    status: 'available',
+    featured: false,
+  },
+  {
+    title: 'Urgencias en consultorio: decisiones clínicas que no pueden esperar',
+    description: 'Especialidad en preparación. Este programa estará enfocado en la atención inicial de urgencias frecuentes en consulta.',
+    category: 'Urgencias',
+    video_url: '',
+    banner_url: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1600&q=80',
+    content: 'Próximamente: abordaje inicial, señales de alarma, estabilización y referencia.',
+    status: 'coming_soon',
+    featured: false,
+  },
+  {
+    title: 'Medicina interna: laboratorio, diagnóstico y seguimiento clínico',
+    description: 'Especialidad en preparación. El curso reunirá criterios prácticos para integrar datos clínicos y estudios de laboratorio.',
+    category: 'Medicina Interna',
+    video_url: '',
+    banner_url: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1600&q=80',
+    content: 'Próximamente: interpretación de laboratorio, seguimiento metabólico y toma de decisiones clínicas.',
+    status: 'coming_soon',
+    featured: false,
+  },
+  {
+    title: 'Ginecología práctica: consulta, prevención y referencia',
+    description: 'Especialidad en preparación. Este programa abordará motivos frecuentes de consulta ginecológica con enfoque claro y aplicable.',
+    category: 'Ginecología',
+    video_url: '',
+    banner_url: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80',
+    content: 'Próximamente: prevención, tamizaje, síntomas frecuentes y referencia oportuna.',
+    status: 'coming_soon',
+    featured: false,
+  },
+  {
+    title: 'Dermatología clínica: lesiones frecuentes y banderas rojas',
+    description: 'Especialidad en preparación. El curso ayudará a reconocer lesiones comunes, datos de alarma y criterios de referencia.',
     category: 'Dermatología',
-    video_url: 'https://www.youtube.com/watch?v=qp0HIF3SfI4',
+    video_url: '',
     banner_url: 'https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&w=1600&q=80',
-    content: 'Curso orientado a reconocimiento visual, diagnóstico diferencial y manejo inicial responsable.',
+    content: 'Próximamente: reconocimiento visual, diagnóstico diferencial y manejo inicial responsable.',
+    status: 'coming_soon',
     featured: false,
   },
   {
-    title: 'Comunicación clínica: cómo explicar diagnósticos con claridad y confianza',
-    description: 'Mejora la forma en que comunicas hallazgos, planes de tratamiento y riesgos al paciente.',
-    category: 'Comunicación Médica',
-    video_url: 'https://www.youtube.com/watch?v=ZXsQAXx_ao0',
-    banner_url: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1600&q=80',
-    content: 'Incluye estructura de explicación, manejo de objeciones, adherencia terapéutica y conversación empática.',
+    title: 'Nutrición clínica: intervención práctica en consulta médica',
+    description: 'Especialidad en preparación. Este curso se enfocará en criterios clínicos para orientar cambios nutricionales realistas.',
+    category: 'Nutrición Clínica',
+    video_url: '',
+    banner_url: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1600&q=80',
+    content: 'Próximamente: evaluación inicial, adherencia, educación del paciente y seguimiento.',
+    status: 'coming_soon',
     featured: false,
   },
-  {
-    title: 'Crea tu primer curso médico digital con DocLevel',
-    description: 'Una guía para doctores especialistas que quieren transformar su experiencia clínica en formación médica digital.',
-    category: 'Educación Médica',
-    video_url: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
-    banner_url: 'https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&w=1600&q=80',
-    content: 'Incluye estructura del temario, promesa educativa, formato de grabación y ruta para convertir conocimiento en un programa claro.',
-    featured: false,
-  },
-].map((course) => ({ ...course, id: randomUUID(), created_at: now }));
+].map((course, index) => ({
+  ...course,
+  id: randomUUID(),
+  created_at: new Date(now - index * 1000),
+}));
 
 async function main() {
   const client = new MongoClient(uri);
@@ -116,7 +128,7 @@ async function main() {
   await db.collection('courses').insertMany(courses);
 
   await client.close();
-  console.log(`Replaced courses in ${dbName}.courses with ${courses.length} DocLevel medical courses.`);
+  console.log(`Replaced courses in ${dbName}.courses with ${courses.length} DocLevel courses.`);
 }
 
 main().catch((error) => {

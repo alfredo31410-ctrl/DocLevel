@@ -216,7 +216,7 @@ export default function AdminPage() {
               <div>
                 <Label className="text-zinc-300 mb-1.5 block">Categoría *</Label>
                 <Input required value={current.category}
-                  placeholder="Fiscal, Contabilidad, ..."
+                  placeholder="Odontología, Pediatría, Cardiología..."
                   onChange={(e) => setCurrent({ ...current, category: e.target.value })}
                   className="bg-zinc-900 border-zinc-800" />
               </div>
