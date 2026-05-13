@@ -15,19 +15,7 @@ async function requireAdmin(request) {
 
 async function seedIfEmpty() {
   const db = await getDb();
-  const admins = db.collection('admins');
   const courses = db.collection('courses');
-
-  const adminCount = await admins.countDocuments();
-  if (adminCount === 0) {
-    const hash = await bcrypt.hash('admin123', 10);
-    await admins.insertOne({
-      id: uuidv4(),
-      email: 'admin@doclevel.com',
-      password: hash,
-      created_at: new Date(),
-    });
-  }
 
   const courseCount = await courses.countDocuments();
   if (courseCount === 0) {
@@ -170,6 +158,14 @@ export async function POST(request, { params }) {
     const db = await getDb();
 
     if (a === 'seed') {
+      if (process.env.NODE_ENV === 'production') {
+        const setupToken = process.env.SETUP_TOKEN;
+        const providedToken = request.headers.get('x-setup-token');
+        if (!setupToken || providedToken !== setupToken) {
+          return err('No autorizado', 401);
+        }
+      }
+
       const result = await seedIfEmpty();
       return json(result);
     }

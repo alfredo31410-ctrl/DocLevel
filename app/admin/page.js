@@ -17,7 +17,7 @@ const empty = { title: '', description: '', category: '', video_url: '', banner_
 export default function AdminPage() {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [loginForm, setLoginForm] = useState({ email: 'admin@doclevel.com', password: 'admin123' });
+  const [loginForm, setLoginForm] = useState({ email: '', password: '' });
   const [courses, setCourses] = useState([]);
   const [editOpen, setEditOpen] = useState(false);
   const [current, setCurrent] = useState(empty);
@@ -129,7 +129,6 @@ export default function AdminPage() {
               <Button type="submit" disabled={loading} className="w-full bg-teal-600 hover:bg-teal-700 text-white h-11">
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Iniciar sesión'}
               </Button>
-              <p className="text-xs text-zinc-500 text-center pt-2">Demo: admin@doclevel.com / admin123</p>
             </form>
           </div>
         </div>
