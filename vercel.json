@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/papa-primerizo",
+      "destination": "https://doclevel-landings.vercel.app/papa-primerizo"
+    },
+    {
+      "source": "/papa-primerizo/:path*",
+      "destination": "https://doclevel-landings.vercel.app/papa-primerizo/:path*"
+    }
+  ]
+}
