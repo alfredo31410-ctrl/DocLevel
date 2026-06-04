@@ -19,6 +19,7 @@ const empty = {
   description: '',
   category: 'Pediatría',
   video_url: '',
+  landing_url: '',
   banner_url: '',
   content: '',
   status: 'available',
@@ -302,12 +303,20 @@ export default function AdminPage() {
               Marcar como destacado en el hero principal
             </label>
             <div>
-              <Label className="mb-1.5 block text-zinc-300">URL del video {current.status === 'available' ? '*' : '(opcional)'}</Label>
+              <Label className="mb-1.5 block text-zinc-300">URL del video (opcional)</Label>
               <Input
-                required={current.status === 'available'}
                 value={current.video_url}
                 placeholder="https://www.youtube.com/watch?v=..."
                 onChange={(e) => setCurrent({ ...current, video_url: e.target.value })}
+                className="border-zinc-800 bg-zinc-900"
+              />
+            </div>
+            <div>
+              <Label className="mb-1.5 block text-zinc-300">URL de registro o landing</Label>
+              <Input
+                value={current.landing_url || ''}
+                placeholder="/papa-primerizo"
+                onChange={(e) => setCurrent({ ...current, landing_url: e.target.value })}
                 className="border-zinc-800 bg-zinc-900"
               />
             </div>

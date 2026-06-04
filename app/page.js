@@ -4,6 +4,7 @@ import { Play, Info } from 'lucide-react';
 import { CourseRow } from '@/components/CourseCard';
 import { getDb } from '@/lib/mongodb';
 import { allowedCourseCategories } from '@/lib/courseCategories';
+import SiteFooter from '@/components/SiteFooter';
 
 export const dynamic = 'force-dynamic';
 
@@ -70,7 +71,7 @@ export default async function HomePage() {
                     href={`/courses/${featured.id}`}
                     className="inline-flex items-center gap-2 rounded-md bg-white px-7 py-3 font-semibold text-black shadow-lg transition hover:bg-zinc-200"
                   >
-                    <Play className="h-5 w-5 fill-black" /> Ver curso
+                    <Play className="h-5 w-5 fill-black" /> Ver detalles
                   </Link>
                   <Link
                     href="/courses"
@@ -109,16 +110,7 @@ export default async function HomePage() {
         ))}
       </div>
 
-      <footer className="border-t border-zinc-800 px-4 py-10 text-sm text-zinc-500 md:px-8">
-        <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-4 md:flex-row">
-          <div>© {new Date().getFullYear()} DocLevel · Cursos médicos impartidos por doctores especialistas.</div>
-          <div className="flex gap-6">
-            <Link href="/courses" className="hover:text-white">Cursos</Link>
-            <Link href="/contact" className="hover:text-white">Contacto</Link>
-            <Link href="/admin" className="hover:text-white">Admin</Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

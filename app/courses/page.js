@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Clock, Search, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import SiteFooter from '@/components/SiteFooter';
 
 const categoryOrder = ['Pediatría', 'Odontología', 'Ginecología', 'Cardiología'];
 
@@ -113,6 +114,7 @@ export default function CoursesPage() {
           </div>
         )}
       </div>
+      <SiteFooter />
     </div>
   );
 }

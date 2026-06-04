@@ -22,6 +22,18 @@ const nextConfig = {
     maxInactiveAge: 10000,
     pagesBufferLength: 2,
   },
+  async rewrites() {
+    return [
+      {
+        source: "/papa-primerizo",
+        destination: "https://doclevel-landings.vercel.app",
+      },
+      {
+        source: "/papa-primerizo/:path*",
+        destination: "https://doclevel-landings.vercel.app/:path*",
+      },
+    ];
+  },
   async headers() {
     return [
       {

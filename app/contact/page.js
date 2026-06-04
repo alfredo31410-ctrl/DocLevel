@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { Mail, Send } from 'lucide-react';
+import SiteFooter from '@/components/SiteFooter';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -85,6 +86,7 @@ export default function ContactPage() {
           </Button>
         </form>
       </div>
+      <SiteFooter />
     </div>
   );
 }

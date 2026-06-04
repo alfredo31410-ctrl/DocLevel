@@ -162,6 +162,7 @@ export async function POST(request, { params }) {
         description,
         category,
         video_url: body.video_url || '',
+        landing_url: body.landing_url || '',
         banner_url,
         content: content || '',
         status: body.status || 'available',
@@ -191,7 +192,7 @@ export async function PUT(request, { params }) {
       const db = await getDb();
 
       const body = await request.json();
-      const allowed = ['title', 'description', 'category', 'video_url', 'banner_url', 'content', 'featured', 'status'];
+      const allowed = ['title', 'description', 'category', 'video_url', 'landing_url', 'banner_url', 'content', 'featured', 'status', 'expert', 'duration', 'price'];
       const update = {};
 
       for (const k of allowed) {

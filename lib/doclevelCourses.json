@@ -1,29 +1,35 @@
 [
   {
-    "title": "Pediatría esencial: signos de alarma y manejo inicial",
-    "description": "Aprende a reconocer escenarios pediátricos que requieren atención inmediata, seguimiento estrecho o referencia oportuna.",
+    "title": "Bebé Seguro, Papás Tranquilos",
+    "description": "Guía pediátrica para papás primerizos durante los primeros 12 meses del bebé, con acompañamiento del Dr. Raúl de Lira.",
     "category": "Pediatría",
-    "video_url": "https://www.youtube.com/watch?v=hqvqOYh5p5g",
-    "banner_url": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1600&q=80",
-    "content": "Incluye fiebre, dificultad respiratoria, hidratación, dolor abdominal y comunicación clara con madres, padres y cuidadores.",
+    "video_url": "",
+    "landing_url": "/papa-primerizo",
+    "banner_url": "https://images.unsplash.com/photo-1546015720-b8b30df5aa27?auto=format&fit=crop&w=1600&q=80",
+    "content": "Programa diseñado para que mamá y papá pasen de la incertidumbre, el miedo y la sobreinformación a tener mayor tranquilidad, criterio y seguridad en cada etapa del desarrollo de su bebé.\n\nIncluye una ruta de acompañamiento para el primer año: Tu bebé en su primer mes, los primeros 3 meses, etapa de 3 a 6 meses, comida sólida paso a paso y cuidados de 6 a 12 meses.\n\nPromesa: vive el primer año de tu bebé con más calma y seguridad, acompañado por una guía pediátrica paso a paso que te ayudará a entender su desarrollo, cuidar cada etapa y distinguir entre lo normal, lo importante y lo urgente.",
     "status": "available",
-    "featured": true
+    "featured": true,
+    "expert": "Dr. Raúl de Lira",
+    "duration": "Ruta de acompañamiento de 12 meses",
+    "price": "Desde $487 MXN"
   },
   {
     "title": "Odontología restauradora: diagnóstico y plan de tratamiento",
-    "description": "Curso práctico para ordenar la evaluación clínica, comunicar hallazgos y estructurar tratamientos odontológicos con criterio profesional.",
+    "description": "Especialidad en preparación. Próximamente reuniremos cursos prácticos para evaluación clínica, comunicación de hallazgos y tratamientos odontológicos.",
     "category": "Odontología",
-    "video_url": "https://www.youtube.com/watch?v=QOzH1D4vIfc",
+    "video_url": "",
+    "landing_url": "",
     "banner_url": "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600&q=80",
-    "content": "Incluye diagnóstico inicial, fotografía clínica, criterios de restauración, comunicación con el paciente y seguimiento.",
-    "status": "available",
+    "content": "Próximamente: diagnóstico inicial, fotografía clínica, criterios de restauración, comunicación con el paciente y seguimiento.",
+    "status": "coming_soon",
     "featured": false
   },
   {
     "title": "Ginecología práctica: consulta, prevención y referencia",
-    "description": "Programa enfocado en motivos frecuentes de consulta ginecológica, prevención, tamizaje y criterios de referencia.",
+    "description": "Especialidad en preparación. Próximamente abordaremos motivos frecuentes de consulta ginecológica, prevención y criterios de referencia.",
     "category": "Ginecología",
     "video_url": "",
+    "landing_url": "",
     "banner_url": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80",
     "content": "Próximamente: prevención, tamizaje, síntomas frecuentes y referencia oportuna.",
     "status": "coming_soon",
@@ -31,12 +37,13 @@
   },
   {
     "title": "Cardiología clínica: ECG básico y valoración inicial",
-    "description": "Fortalece la lectura inicial del electrocardiograma y la toma de decisiones ante síntomas cardiovasculares frecuentes.",
+    "description": "Especialidad en preparación. Próximamente tendremos formación para lectura inicial del electrocardiograma y decisiones cardiovasculares frecuentes.",
     "category": "Cardiología",
-    "video_url": "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+    "video_url": "",
+    "landing_url": "",
     "banner_url": "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1600&q=80",
-    "content": "Incluye ritmo, frecuencia, intervalos, datos de alarma, dolor torácico, palpitaciones y criterios de referencia.",
-    "status": "available",
+    "content": "Próximamente: ritmo, frecuencia, intervalos, datos de alarma, dolor torácico, palpitaciones y criterios de referencia.",
+    "status": "coming_soon",
     "featured": false
   }
 ]
