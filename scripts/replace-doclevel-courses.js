@@ -34,7 +34,7 @@ if (!uri) {
 const now = Date.now();
 const courses = doclevelCourses.map((course, index) => ({
   ...course,
-  id: randomUUID(),
+  id: course.id || randomUUID(),
   created_at: new Date(now - index * 1000),
 }));
 

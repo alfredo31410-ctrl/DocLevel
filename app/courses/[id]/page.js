@@ -40,11 +40,14 @@ export default async function CoursePage({ params }) {
         </Link>
 
         <section className="overflow-hidden rounded-lg border border-[#119ff3]/20 bg-[#06111d] shadow-2xl shadow-[#119ff3]/5">
-          <div className="relative min-h-[420px]">
-            <img src={course.banner_url} alt={course.title} className="absolute inset-0 h-full w-full object-cover opacity-70" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-[#031c31]/70 to-transparent" />
-            <div className="relative z-10 flex min-h-[420px] items-end p-6 md:p-10">
+          <div className="relative md:min-h-[460px]">
+            <div className="md:hidden">
+              <img src={course.banner_url} alt={course.title} className="w-full bg-black object-contain" />
+            </div>
+            <img src={course.banner_url} alt={course.title} className="absolute inset-0 hidden h-full w-full object-cover opacity-70 md:block" />
+            <div className="absolute inset-0 hidden bg-gradient-to-t from-black via-black/70 to-black/20 md:block" />
+            <div className="absolute inset-0 hidden bg-gradient-to-r from-black via-[#031c31]/70 to-transparent md:block" />
+            <div className="relative z-10 flex p-6 md:min-h-[460px] md:items-end md:p-10">
               <div className="max-w-3xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded bg-[#119ff3] px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
                   {isComingSoon ? <Clock className="h-4 w-4" /> : <HeartPulse className="h-4 w-4" />}
@@ -94,15 +97,15 @@ export default async function CoursePage({ params }) {
 
             {!isComingSoon && (
               <div className="rounded-lg border border-[#119ff3]/30 bg-[#119ff3]/10 p-6">
-                <h2 className="mb-3 text-xl font-bold text-white">Ruta de aprendizaje</h2>
+                <h2 className="mb-3 text-xl font-bold text-white">Qué aprenderás</h2>
                 <div className="grid gap-3 text-sm text-zinc-200 md:grid-cols-2">
                   {[
-                    'Tu bebé en su primer mes: 0 a 30 días',
-                    'Los primeros 3 meses de tu bebé',
-                    'Tu bebé de 3 a 6 meses',
-                    'Comida sólida paso a paso',
-                    'Tu bebé de 6 a 12 meses',
-                    'Sesiones en vivo de preguntas y respuestas',
+                    'Qué es normal durante las primeras horas',
+                    'Qué señales sí deben preocuparte',
+                    'Cómo cuidar a tu bebé desde el nacimiento',
+                    'Primer mes de vida: cuidados esenciales',
+                    'Criterios para buscar atención médica',
+                    'Guía pediátrica clara para casa',
                   ].map((item) => (
                     <div key={item} className="rounded border border-[#119ff3]/15 bg-black/30 p-3">{item}</div>
                   ))}

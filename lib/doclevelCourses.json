@@ -1,17 +1,18 @@
 [
   {
-    "title": "Bebé Seguro, Papás Tranquilos",
-    "description": "Guía pediátrica para papás primerizos durante los primeros 12 meses del bebé, con acompañamiento del Dr. Raúl de Lira.",
+    "id": "048a3d70-3e78-4939-bc37-b61f1a8b3445",
+    "title": "Las Primeras Horas de tu Bebé",
+    "description": "Clase gratuita en línea para papás primerizos: qué es normal, qué debe preocuparte y cómo cuidar a tu bebé desde el nacimiento.",
     "category": "Pediatría",
     "video_url": "",
     "landing_url": "/papa-primerizo",
-    "banner_url": "https://images.unsplash.com/photo-1546015720-b8b30df5aa27?auto=format&fit=crop&w=1600&q=80",
-    "content": "Programa diseñado para que mamá y papá pasen de la incertidumbre, el miedo y la sobreinformación a tener mayor tranquilidad, criterio y seguridad en cada etapa del desarrollo de su bebé.\n\nIncluye una ruta de acompañamiento para el primer año: Tu bebé en su primer mes, los primeros 3 meses, etapa de 3 a 6 meses, comida sólida paso a paso y cuidados de 6 a 12 meses.\n\nPromesa: vive el primer año de tu bebé con más calma y seguridad, acompañado por una guía pediátrica paso a paso que te ayudará a entender su desarrollo, cuidar cada etapa y distinguir entre lo normal, lo importante y lo urgente.",
+    "banner_url": "/brand/papa-primerizo-banner.png",
+    "content": "Clase gratuita en vivo: Las Primeras Horas de tu Bebé.\n\nAprende qué es normal, qué debe preocuparte y cómo cuidar a tu bebé desde el nacimiento, con una guía práctica para el primer mes de vida.\n\nImpartido por el Dr. Raúl G. de Lira López.\n\nEsta clase ayuda a papás primerizos a distinguir entre señales normales de adaptación y situaciones que sí requieren atención médica, con información clara, segura y fácil de aplicar en casa.",
     "status": "available",
     "featured": true,
-    "expert": "Dr. Raúl de Lira",
-    "duration": "Ruta de acompañamiento de 12 meses",
-    "price": "Desde $487 MXN"
+    "expert": "Dr. Raúl G. de Lira López",
+    "duration": "24 de junio · 12:00 hora CDMX",
+    "price": "Curso gratuito 100% en línea"
   },
   {
     "title": "Odontología",

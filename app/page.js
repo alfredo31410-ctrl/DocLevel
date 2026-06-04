@@ -41,22 +41,31 @@ export default async function HomePage() {
       <Navbar />
 
       {featured && (
-        <section className="relative min-h-[620px] w-full overflow-hidden md:h-[88vh]">
+        <section className="relative w-full overflow-hidden md:min-h-[620px] md:h-[88vh]">
+          <div className="md:hidden px-4 pt-28">
+            <img
+              src={featured.banner_url}
+              alt={featured.title}
+              className="w-full rounded-lg border border-[#119ff3]/20 bg-black object-contain shadow-2xl shadow-[#119ff3]/10"
+            />
+          </div>
+
           <img
             src={featured.banner_url}
             alt={featured.title}
-            className="absolute inset-0 h-full w-full scale-105 object-cover"
+            className="absolute inset-0 hidden h-full w-full scale-105 object-cover md:block"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/35" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-[#031c31]/70 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02070d] to-transparent" />
-          <div className="relative z-10 flex h-full items-end pb-20 md:items-center md:pb-0">
-            <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8">
+          <div className="absolute inset-0 hidden bg-gradient-to-t from-black via-black/70 to-black/35 md:block" />
+          <div className="absolute inset-0 hidden bg-gradient-to-r from-black via-[#031c31]/70 to-transparent md:block" />
+          <div className="absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-[#02070d] to-transparent md:block" />
+
+          <div className="relative z-10 flex px-4 pb-14 pt-8 md:h-full md:items-center md:px-8 md:pb-0 md:pt-0">
+            <div className="mx-auto w-full max-w-[1600px]">
               <div className="max-w-3xl">
                 <div className="mb-4 inline-block rounded-sm border border-[#119ff3]/40 bg-[#119ff3]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#4dbdff] md:text-sm">
                   Curso destacado · {featured.category}
                 </div>
-                <h1 className="mb-4 text-4xl font-black leading-[0.95] text-white drop-shadow-2xl md:text-6xl">
+                <h1 className="mb-4 text-[2.45rem] font-black leading-[0.98] text-white drop-shadow-2xl sm:text-5xl md:text-6xl">
                   {featured.title}
                 </h1>
                 <p className="mb-4 max-w-2xl text-base leading-relaxed text-zinc-200 drop-shadow-lg md:text-lg">
@@ -91,7 +100,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section className="relative z-20 -mt-6 px-4 pb-6 md:-mt-16 md:px-8">
+      <section className="relative z-20 px-4 pb-6 md:-mt-16 md:px-8">
         <div className="mx-auto max-w-[1600px] rounded-lg border border-[#119ff3]/20 bg-[#04101c]/80 p-6 shadow-2xl shadow-[#119ff3]/5 backdrop-blur">
           <p className="text-sm uppercase tracking-[0.25em] text-[#4dbdff]">Propósito</p>
           <h2 className="mt-3 max-w-3xl text-2xl font-bold text-white md:text-3xl">
