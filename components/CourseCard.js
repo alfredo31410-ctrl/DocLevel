@@ -14,7 +14,9 @@ export function CourseCard({ course, size = 'md' }) {
   return (
     <Link
       href={`/courses/${course.id}`}
-      className={`group relative flex-shrink-0 ${widths[size]} overflow-hidden rounded-md bg-zinc-900 transition-all duration-300 hover:z-10 hover:scale-[1.04] hover:shadow-2xl hover:shadow-black/60`}
+      className={`group relative flex-shrink-0 ${widths[size]} overflow-hidden rounded-md bg-zinc-900 transition-all duration-300 hover:z-10 hover:shadow-2xl hover:shadow-black/60 ${
+        isComingSoon ? 'opacity-55 saturate-50 hover:opacity-75' : 'hover:scale-[1.04]'
+      }`}
     >
       <div className="relative aspect-video overflow-hidden">
         <img
@@ -23,7 +25,8 @@ export function CourseCard({ course, size = 'md' }) {
           className="h-full w-full object-cover transition group-hover:brightness-110"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10 opacity-80" />
+        {isComingSoon && <div className="absolute inset-0 bg-black/35" />}
         <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
           {isComingSoon ? 'Próximamente' : course.category}
         </div>
@@ -38,7 +41,9 @@ export function CourseCard({ course, size = 'md' }) {
         </div>
       </div>
       <div className="p-3">
-        <div className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-teal-500">{course.category}</div>
+        {!isComingSoon && (
+          <div className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-teal-500">{course.category}</div>
+        )}
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-white md:text-base">{course.title}</h3>
       </div>
     </Link>

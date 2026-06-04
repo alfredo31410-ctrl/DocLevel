@@ -14,35 +14,35 @@
     "price": "Desde $487 MXN"
   },
   {
-    "title": "Odontología restauradora: diagnóstico y plan de tratamiento",
-    "description": "Especialidad en preparación. Próximamente reuniremos cursos prácticos para evaluación clínica, comunicación de hallazgos y tratamientos odontológicos.",
+    "title": "Odontología",
+    "description": "",
     "category": "Odontología",
     "video_url": "",
     "landing_url": "",
     "banner_url": "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600&q=80",
-    "content": "Próximamente: diagnóstico inicial, fotografía clínica, criterios de restauración, comunicación con el paciente y seguimiento.",
+    "content": "",
     "status": "coming_soon",
     "featured": false
   },
   {
-    "title": "Ginecología práctica: consulta, prevención y referencia",
-    "description": "Especialidad en preparación. Próximamente abordaremos motivos frecuentes de consulta ginecológica, prevención y criterios de referencia.",
+    "title": "Ginecología",
+    "description": "",
     "category": "Ginecología",
     "video_url": "",
     "landing_url": "",
     "banner_url": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80",
-    "content": "Próximamente: prevención, tamizaje, síntomas frecuentes y referencia oportuna.",
+    "content": "",
     "status": "coming_soon",
     "featured": false
   },
   {
-    "title": "Cardiología clínica: ECG básico y valoración inicial",
-    "description": "Especialidad en preparación. Próximamente tendremos formación para lectura inicial del electrocardiograma y decisiones cardiovasculares frecuentes.",
+    "title": "Cardiología",
+    "description": "",
     "category": "Cardiología",
     "video_url": "",
     "landing_url": "",
     "banner_url": "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1600&q=80",
-    "content": "Próximamente: ritmo, frecuencia, intervalos, datos de alarma, dolor torácico, palpitaciones y criterios de referencia.",
+    "content": "",
     "status": "coming_soon",
     "featured": false
   }

@@ -125,10 +125,14 @@ function CourseGridCard({ course }) {
   return (
     <Link
       href={`/courses/${course.id}`}
-      className="group overflow-hidden rounded-lg bg-zinc-900 transition hover:ring-2 hover:ring-teal-500/60"
+      className={cn(
+        'group overflow-hidden rounded-lg bg-zinc-900 transition hover:ring-2 hover:ring-teal-500/60',
+        isComingSoon && 'opacity-55 saturate-50 hover:opacity-75'
+      )}
     >
       <div className="relative aspect-video overflow-hidden">
         <img src={course.banner_url} alt={course.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        {isComingSoon && <div className="absolute inset-0 bg-black/35" />}
         <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
           {course.category}
         </div>
@@ -140,8 +144,8 @@ function CourseGridCard({ course }) {
         )}
       </div>
       <div className="p-4">
-        <h3 className="mb-2 line-clamp-2 font-semibold text-white">{course.title}</h3>
-        <p className="line-clamp-3 text-sm text-zinc-400">{course.description}</p>
+        <h3 className={cn('line-clamp-2 font-semibold text-white', !isComingSoon && 'mb-2')}>{course.title}</h3>
+        {!isComingSoon && <p className="line-clamp-3 text-sm text-zinc-400">{course.description}</p>}
       </div>
     </Link>
   );
