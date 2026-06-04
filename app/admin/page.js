@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
@@ -141,8 +141,8 @@ export default function AdminPage() {
         <div className="flex justify-center px-4 pb-20 pt-28">
           <div className="w-full max-w-md">
             <div className="mb-8 text-center">
-              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full border border-teal-500/40 bg-teal-600/20">
-                <Lock className="h-6 w-6 text-teal-500" />
+              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full border border-[#4dbdff]/40 bg-[#119ff3]/20">
+                <Lock className="h-6 w-6 text-[#4dbdff]" />
               </div>
               <h1 className="text-3xl font-black text-white">Panel de Administración</h1>
               <p className="mt-2 text-zinc-500">Inicia sesión para gestionar cursos</p>
@@ -168,7 +168,7 @@ export default function AdminPage() {
                   className="h-11 border-zinc-800 bg-zinc-950 text-white"
                 />
               </div>
-              <Button type="submit" disabled={loading} className="h-11 w-full bg-teal-600 text-white hover:bg-teal-700">
+              <Button type="submit" disabled={loading} className="h-11 w-full bg-[#119ff3] text-white hover:bg-[#38b6ff]">
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Iniciar sesión'}
               </Button>
             </form>
@@ -188,7 +188,7 @@ export default function AdminPage() {
             <p className="mt-1 text-zinc-500">{courses.length} curso{courses.length !== 1 && 's'} en total</p>
           </div>
           <div className="flex gap-2">
-            <Button onClick={openCreate} className="bg-teal-600 text-white hover:bg-teal-700">
+            <Button onClick={openCreate} className="bg-[#119ff3] text-white hover:bg-[#38b6ff]">
               <Plus className="mr-2 h-4 w-4" /> Nuevo curso
             </Button>
             <Button variant="outline" onClick={logout} className="border-zinc-700 bg-transparent text-zinc-300 hover:bg-zinc-900">
@@ -227,15 +227,15 @@ export default function AdminPage() {
                   {c.status === 'coming_soon' ? (
                     <span className="rounded border border-zinc-600 bg-zinc-800 px-2 py-1 text-xs text-zinc-300">Próximamente</span>
                   ) : (
-                    <span className="rounded border border-teal-500/30 bg-teal-600/20 px-2 py-1 text-xs text-teal-400">Disponible</span>
+                    <span className="rounded border border-[#4dbdff]/30 bg-[#119ff3]/20 px-2 py-1 text-xs text-[#4dbdff]">Disponible</span>
                   )}
                 </div>
                 <div className="hidden md:block md:col-span-1">
-                  {c.featured ? <span className="text-xs text-teal-400">Sí</span> : <span className="text-xs text-zinc-600">-</span>}
+                  {c.featured ? <span className="text-xs text-[#4dbdff]">Sí</span> : <span className="text-xs text-zinc-600">-</span>}
                 </div>
                 <div className="col-span-3 flex justify-end gap-1 md:col-span-2">
                   <Button size="icon" variant="ghost" onClick={() => openEdit(c)} className="text-zinc-400 hover:text-white"><Pencil className="h-4 w-4" /></Button>
-                  <Button size="icon" variant="ghost" onClick={() => setDeleteTarget(c)} className="text-zinc-400 hover:text-teal-500"><Trash2 className="h-4 w-4" /></Button>
+                  <Button size="icon" variant="ghost" onClick={() => setDeleteTarget(c)} className="text-zinc-400 hover:text-[#4dbdff]"><Trash2 className="h-4 w-4" /></Button>
                 </div>
               </div>
             ))}
@@ -347,7 +347,7 @@ export default function AdminPage() {
               <Button type="button" variant="outline" onClick={() => setEditOpen(false)} className="border-zinc-700 bg-transparent text-zinc-300 hover:bg-zinc-900">
                 Cancelar
               </Button>
-              <Button type="submit" disabled={loading} className="bg-teal-600 text-white hover:bg-teal-700">
+              <Button type="submit" disabled={loading} className="bg-[#119ff3] text-white hover:bg-[#38b6ff]">
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : current.id ? 'Guardar cambios' : 'Crear curso'}
               </Button>
             </DialogFooter>
@@ -365,10 +365,11 @@ export default function AdminPage() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel className="border-zinc-700 bg-transparent text-zinc-300 hover:bg-zinc-900">Cancelar</AlertDialogCancel>
-            <AlertDialogAction onClick={doDelete} className="bg-teal-600 text-white hover:bg-teal-700">Eliminar</AlertDialogAction>
+            <AlertDialogAction onClick={doDelete} className="bg-[#119ff3] text-white hover:bg-[#38b6ff]">Eliminar</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
     </div>
   );
 }
+

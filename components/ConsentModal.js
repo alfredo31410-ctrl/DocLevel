@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ export default function ConsentModal() {
         <div className="mb-4 flex items-center gap-3">
           <img src="/favicon.png" alt="DocLevel" className="h-10 w-10 rounded bg-black object-contain" />
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-teal-400">DocLevel</p>
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#4dbdff]">DocLevel</p>
             <h2 className="text-xl font-bold">Aviso de privacidad y términos</h2>
           </div>
         </div>
@@ -36,7 +36,7 @@ export default function ConsentModal() {
           términos y condiciones, y uso de cookies. Esta plataforma ofrece información educativa y no sustituye
           la valoración médica personalizada.
         </p>
-        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-teal-400">
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-[#4dbdff]">
           <Link href="/aviso-legal" className="hover:text-white">Aviso legal</Link>
           <Link href="/privacidad" className="hover:text-white">Política de privacidad</Link>
           <Link href="/cookies" className="hover:text-white">Política de cookies</Link>
@@ -47,12 +47,12 @@ export default function ConsentModal() {
             type="checkbox"
             checked={accepted}
             onChange={(e) => setAccepted(e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-zinc-700 bg-zinc-900 accent-teal-500"
+            className="mt-1 h-4 w-4 rounded border-zinc-700 bg-zinc-900 accent-[#119ff3]"
           />
           <span>Acepto los términos y condiciones, aviso de privacidad y políticas del sitio.</span>
         </label>
         <div className="mt-6 flex justify-end">
-          <Button disabled={!accepted} onClick={accept} className="bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-50">
+          <Button disabled={!accepted} onClick={accept} className="bg-[#119ff3] text-white hover:bg-[#38b6ff] disabled:opacity-50">
             Aceptar y continuar
           </Button>
         </div>
@@ -60,3 +60,4 @@ export default function ConsentModal() {
     </div>
   );
 }
+

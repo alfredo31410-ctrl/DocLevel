@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Link from 'next/link';
-import { Play, Info } from 'lucide-react';
+import { Info, Play } from 'lucide-react';
 import { CourseRow } from '@/components/CourseCard';
 import { getDb } from '@/lib/mongodb';
 import { allowedCourseCategories } from '@/lib/courseCategories';
@@ -31,14 +31,13 @@ export default async function HomePage() {
     return acc;
   }, {});
 
-  const categoryOrder = allowedCourseCategories;
   const orderedCats = [
-    ...categoryOrder.filter((c) => byCategory[c]),
-    ...Object.keys(byCategory).filter((c) => !categoryOrder.includes(c)),
+    ...allowedCourseCategories.filter((c) => byCategory[c]),
+    ...Object.keys(byCategory).filter((c) => !allowedCourseCategories.includes(c)),
   ];
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#02070d_0%,#000_46%,#030912_100%)]">
       <Navbar />
 
       {featured && (
@@ -48,12 +47,13 @@ export default async function HomePage() {
             alt={featured.title}
             className="absolute inset-0 h-full w-full scale-105 object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-[#031c31]/70 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02070d] to-transparent" />
           <div className="relative z-10 flex h-full items-end pb-20 md:items-center md:pb-0">
             <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8">
               <div className="max-w-3xl">
-                <div className="mb-4 inline-block rounded-sm border border-teal-500/30 bg-teal-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-teal-400 md:text-sm">
+                <div className="mb-4 inline-block rounded-sm border border-[#119ff3]/40 bg-[#119ff3]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#4dbdff] md:text-sm">
                   Curso destacado · {featured.category}
                 </div>
                 <h1 className="mb-4 text-4xl font-black leading-[0.95] text-white drop-shadow-2xl md:text-6xl">
@@ -69,13 +69,13 @@ export default async function HomePage() {
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href={`/courses/${featured.id}`}
-                    className="inline-flex items-center gap-2 rounded-md bg-white px-7 py-3 font-semibold text-black shadow-lg transition hover:bg-zinc-200"
+                    className="inline-flex items-center gap-2 rounded-md bg-[#119ff3] px-7 py-3 font-semibold text-white shadow-lg shadow-[#119ff3]/20 transition hover:bg-[#38b6ff]"
                   >
-                    <Play className="h-5 w-5 fill-black" /> Ver detalles
+                    <Play className="h-5 w-5 fill-white" /> Ver detalles
                   </Link>
                   <Link
                     href="/courses"
-                    className="inline-flex items-center gap-2 rounded-md bg-zinc-700/80 px-7 py-3 font-semibold text-white backdrop-blur transition hover:bg-zinc-600/80"
+                    className="inline-flex items-center gap-2 rounded-md border border-[#119ff3]/25 bg-[#07111d]/85 px-7 py-3 font-semibold text-white backdrop-blur transition hover:border-[#119ff3]/60 hover:bg-[#0a1d31]"
                   >
                     <Info className="h-5 w-5" /> Explorar catálogo
                   </Link>
@@ -92,8 +92,8 @@ export default async function HomePage() {
       )}
 
       <section className="relative z-20 -mt-6 px-4 pb-6 md:-mt-16 md:px-8">
-        <div className="mx-auto max-w-[1600px] rounded-lg border border-white/10 bg-zinc-950/70 p-6 backdrop-blur">
-          <p className="text-sm uppercase tracking-[0.25em] text-teal-400">Propósito</p>
+        <div className="mx-auto max-w-[1600px] rounded-lg border border-[#119ff3]/20 bg-[#04101c]/80 p-6 shadow-2xl shadow-[#119ff3]/5 backdrop-blur">
+          <p className="text-sm uppercase tracking-[0.25em] text-[#4dbdff]">Propósito</p>
           <h2 className="mt-3 max-w-3xl text-2xl font-bold text-white md:text-3xl">
             Educación médica digital creada por especialistas, para especialistas.
           </h2>

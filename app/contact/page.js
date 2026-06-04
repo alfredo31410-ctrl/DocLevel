@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
@@ -39,7 +39,7 @@ export default function ContactPage() {
       <Navbar />
       <div className="mx-auto max-w-3xl px-4 pb-20 pt-28 md:px-8">
         <div className="mb-10">
-          <div className="mb-3 inline-flex items-center gap-2 text-teal-500">
+          <div className="mb-3 inline-flex items-center gap-2 text-[#4dbdff]">
             <Mail className="h-5 w-5" />
             <span className="text-sm font-bold uppercase tracking-widest">Contacto</span>
           </div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
               className="border-zinc-800 bg-zinc-950 text-white"
             />
           </div>
-          <Button type="submit" disabled={sending} className="w-full bg-teal-600 text-white hover:bg-teal-700 md:w-auto">
+          <Button type="submit" disabled={sending} className="w-full bg-[#119ff3] text-white hover:bg-[#38b6ff] md:w-auto">
             <Send className="mr-2 h-4 w-4" />
             {sending ? 'Enviando...' : 'Enviar mensaje'}
           </Button>
@@ -90,3 +90,4 @@ export default function ContactPage() {
     </div>
   );
 }
+

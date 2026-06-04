@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import SiteFooter from '@/components/SiteFooter';
 
@@ -21,7 +21,7 @@ export default function SitemapPage() {
         <h1 className="mb-8 text-3xl font-black text-white md:text-5xl">Mapa del sitio</h1>
         <div className="grid gap-3 sm:grid-cols-2">
           {links.map(([label, href]) => (
-            <Link key={href} href={href} className="rounded-lg border border-zinc-800 bg-zinc-900 p-4 text-zinc-200 transition hover:border-teal-500/60 hover:text-white">
+            <Link key={href} href={href} className="rounded-lg border border-zinc-800 bg-zinc-900 p-4 text-zinc-200 transition hover:border-[#119ff3]/60 hover:text-white">
               {label}
             </Link>
           ))}
@@ -31,3 +31,4 @@ export default function SitemapPage() {
     </div>
   );
 }
+

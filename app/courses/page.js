@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Clock, Search, Loader2 } from 'lucide-react';
+import { Clock, Loader2, Search } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import SiteFooter from '@/components/SiteFooter';
@@ -44,10 +44,11 @@ export default function CoursesPage() {
   }, [search, category]);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#02070d_0%,#000_48%,#030912_100%)]">
       <Navbar />
       <div className="mx-auto max-w-[1600px] px-4 pb-20 pt-28 md:px-8">
         <div className="mb-8">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-[#4dbdff]">Catálogo</p>
           <h1 className="mb-2 text-3xl font-black text-white md:text-5xl">Explora los cursos de DocLevel</h1>
           <p className="max-w-3xl text-zinc-400">
             Encuentra cursos médicos creados por doctores especialistas para profesionales de la salud
@@ -57,12 +58,12 @@ export default function CoursesPage() {
 
         <div className="mb-8 flex flex-col items-stretch gap-4 md:flex-row md:items-center">
           <div className="relative max-w-xl flex-1">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#4dbdff]" />
             <Input
               placeholder="Buscar por título, descripción o especialidad..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 border-zinc-800 bg-zinc-900 pl-10 text-white placeholder:text-zinc-500"
+              className="h-11 border-[#119ff3]/20 bg-[#06111d] pl-10 text-white placeholder:text-zinc-500 focus-visible:ring-[#119ff3]"
             />
           </div>
         </div>
@@ -74,8 +75,8 @@ export default function CoursesPage() {
             className={cn(
               'rounded-full text-sm',
               category === 'all'
-                ? 'bg-white text-black hover:bg-zinc-200'
-                : 'border-zinc-700 bg-transparent text-zinc-300 hover:bg-zinc-900 hover:text-white'
+                ? 'bg-[#119ff3] text-white hover:bg-[#38b6ff]'
+                : 'border-[#119ff3]/25 bg-transparent text-zinc-300 hover:bg-[#071b2d] hover:text-white'
             )}
           >
             Todas
@@ -88,8 +89,8 @@ export default function CoursesPage() {
               className={cn(
                 'rounded-full text-sm',
                 category === c
-                  ? 'bg-white text-black hover:bg-zinc-200'
-                  : 'border-zinc-700 bg-transparent text-zinc-300 hover:bg-zinc-900 hover:text-white'
+                  ? 'bg-[#119ff3] text-white hover:bg-[#38b6ff]'
+                  : 'border-[#119ff3]/25 bg-transparent text-zinc-300 hover:bg-[#071b2d] hover:text-white'
               )}
             >
               {c}
@@ -126,14 +127,15 @@ function CourseGridCard({ course }) {
     <Link
       href={`/courses/${course.id}`}
       className={cn(
-        'group overflow-hidden rounded-lg bg-zinc-900 transition hover:ring-2 hover:ring-teal-500/60',
+        'group overflow-hidden rounded-lg border border-[#119ff3]/10 bg-[#06111d] transition hover:border-[#119ff3]/45 hover:ring-2 hover:ring-[#119ff3]/30',
         isComingSoon && 'opacity-55 saturate-50 hover:opacity-75'
       )}
     >
       <div className="relative aspect-video overflow-hidden">
         <img src={course.banner_url} alt={course.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-[#031c31]/35 to-transparent" />
         {isComingSoon && <div className="absolute inset-0 bg-black/35" />}
-        <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+        <div className="absolute left-3 top-3 rounded bg-[#119ff3] px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
           {course.category}
         </div>
         {isComingSoon && (

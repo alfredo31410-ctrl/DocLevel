@@ -14,7 +14,7 @@ export function CourseCard({ course, size = 'md' }) {
   return (
     <Link
       href={`/courses/${course.id}`}
-      className={`group relative flex-shrink-0 ${widths[size]} overflow-hidden rounded-md bg-zinc-900 transition-all duration-300 hover:z-10 hover:shadow-2xl hover:shadow-black/60 ${
+      className={`group relative flex-shrink-0 ${widths[size]} overflow-hidden rounded-md border border-[#119ff3]/10 bg-[#06111d] transition-all duration-300 hover:z-10 hover:border-[#119ff3]/45 hover:shadow-2xl hover:shadow-[#119ff3]/10 ${
         isComingSoon ? 'opacity-55 saturate-50 hover:opacity-75' : 'hover:scale-[1.04]'
       }`}
     >
@@ -25,9 +25,9 @@ export function CourseCard({ course, size = 'md' }) {
           className="h-full w-full object-cover transition group-hover:brightness-110"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10 opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-[#031c31]/45 to-transparent opacity-90" />
         {isComingSoon && <div className="absolute inset-0 bg-black/35" />}
-        <div className="absolute left-3 top-3 rounded bg-teal-600 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+        <div className="absolute left-3 top-3 rounded bg-[#119ff3] px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
           {isComingSoon ? 'Próximamente' : course.category}
         </div>
         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition group-hover:opacity-100">
@@ -42,7 +42,7 @@ export function CourseCard({ course, size = 'md' }) {
       </div>
       <div className="p-3">
         {!isComingSoon && (
-          <div className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-teal-500">{course.category}</div>
+          <div className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-[#4dbdff]">{course.category}</div>
         )}
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-white md:text-base">{course.title}</h3>
       </div>
