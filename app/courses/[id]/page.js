@@ -40,7 +40,7 @@ export default async function CoursePage({ params }) {
         </Link>
 
         {isComingSoon ? (
-          <div className="relative mb-8 overflow-hidden rounded-xl bg-zinc-950 shadow-2xl shadow-black ring-1 ring-zinc-800">
+          <div className="relative mb-8 overflow-hidden rounded-lg bg-zinc-950 shadow-2xl shadow-black ring-1 ring-zinc-800">
             <img src={course.banner_url} alt={course.title} className="h-[360px] w-full object-cover opacity-70 md:h-[460px]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
             <div className="absolute inset-x-0 bottom-0 p-6 md:p-10">
@@ -64,7 +64,7 @@ export default async function CoursePage({ params }) {
             </div>
           </div>
         ) : (
-          <div className="mb-8 aspect-video w-full overflow-hidden rounded-xl bg-zinc-950 shadow-2xl shadow-black ring-1 ring-zinc-800">
+          <div className="mb-8 aspect-video w-full overflow-hidden rounded-lg bg-zinc-950 shadow-2xl shadow-black ring-1 ring-zinc-800">
             <iframe
               src={embedUrl}
               title={course.title}

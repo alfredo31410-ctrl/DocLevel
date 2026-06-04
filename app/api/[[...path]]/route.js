@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/mongodb';
 import { signToken, getAuthFromRequest } from '@/lib/auth';
+import doclevelCourses from '@/lib/doclevelCourses.json';
+import { allowedCourseCategories } from '@/lib/courseCategories';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,74 +21,12 @@ async function seedIfEmpty() {
 
   const courseCount = await courses.countDocuments();
   if (courseCount === 0) {
-    const now = new Date();
-    const seed = [
-      {
-        title: 'Convierte tu conocimiento médico en un programa educativo premium',
-        description: 'Aprende a estructurar tu experiencia clínica en una oferta formativa clara, valiosa y lista para escalar.',
-        category: 'Programas Educativos',
-        video_url: 'https://www.youtube.com/watch?v=QOzH1D4vIfc',
-        banner_url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80',
-        content: 'Incluye la estructura base de un programa, transformación de temas clínicos en módulos y criterios para validar una promesa educativa sólida.',
-        featured: true,
-      },
-      {
-        title: 'De consulta a curso: diseña una oferta educativa para médicos',
-        description: 'Descubre cómo pasar del conocimiento individual a un sistema enseñable que no dependa solo de tu consulta uno a uno.',
-        category: 'Programas Educativos',
-        video_url: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
-        banner_url: 'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1600&q=80',
-        content: 'Trabajamos propuesta, transformación de experiencia clínica en metodología y diseño de una experiencia de aprendizaje profesional.',
-      },
-      {
-        title: 'Posicionamiento médico: conviértete en referente en tu especialidad',
-        description: 'Construye autoridad y percepción de valor para que tu conocimiento sea reconocido, buscado y recomendado.',
-        category: 'Posicionamiento',
-        video_url: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-        banner_url: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80',
-        content: 'Incluye narrativa de autoridad, diferenciación profesional y mensajes clave para que tu especialidad se convierta en una marca educativa.',
-      },
-      {
-        title: 'Monetiza tu experiencia médica sin improvisar',
-        description: 'Aprende a transformar años de práctica en una oferta educativa rentable, ética y replicable.',
-        category: 'Monetización',
-        video_url: 'https://www.youtube.com/watch?v=kJQP7kiw5Fk',
-        banner_url: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1600&q=80',
-        content: 'Verás modelos de monetización, estructuración de oferta y cómo fijar una propuesta de valor sin competir por precio.',
-      },
-      {
-        title: 'Escala tu conocimiento médico más allá de la práctica individual',
-        description: 'Crea sistemas que te permitan enseñar a más personas con estructura, impacto y consistencia.',
-        category: 'Escalamiento',
-        video_url: 'https://www.youtube.com/watch?v=hqvqOYh5p5g',
-        banner_url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80',
-        content: 'Aprenderás a pensar en cohortes, clases, recursos y procesos para dejar de vender solo tiempo y empezar a vender conocimiento.',
-      },
-      {
-        title: 'Diseña una metodología propia para enseñar medicina',
-        description: 'Ordena tu expertise en un método claro que facilite el aprendizaje, la confianza y los resultados de tus alumnos.',
-        category: 'Autoridad Médica',
-        video_url: 'https://www.youtube.com/watch?v=qp0HIF3SfI4',
-        banner_url: 'https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1600&q=80',
-        content: 'Incluye marcos para documentar tu enfoque, organizar procesos y crear una experiencia de enseñanza diferenciada.',
-      },
-      {
-        title: 'Estrategia de contenidos para médicos que quieren enseñar',
-        description: 'Desarrolla una comunicación que eduque, posicione y prepare a tu audiencia para comprar tu programa.',
-        category: 'Estrategia',
-        video_url: 'https://www.youtube.com/watch?v=ZXsQAXx_ao0',
-        banner_url: 'https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&w=1600&q=80',
-        content: 'Definimos mensajes, piezas de contenido y una ruta para que tu conocimiento se convierta en visibilidad y demanda.',
-      },
-      {
-        title: 'Crea un negocio educativo replicable a partir de tu especialidad',
-        description: 'Integra posicionamiento, oferta, estructura y ejecución para construir una línea educativa estable y escalable.',
-        category: 'Monetización',
-        video_url: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
-        banner_url: 'https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&w=1600&q=80',
-        content: 'Unificamos visión de negocio, programa, adquisición y entrega para que tu conocimiento funcione como una unidad replicable.',
-      },
-    ].map((c) => ({ ...c, id: uuidv4(), created_at: now }));
+    const now = Date.now();
+    const seed = doclevelCourses.map((course, index) => ({
+      ...course,
+      id: uuidv4(),
+      created_at: new Date(now - index * 1000),
+    }));
 
     await courses.insertMany(seed);
   }
@@ -98,13 +38,15 @@ export async function GET(request, { params }) {
   try {
     const path = params.path || [];
     const [a, b] = path;
-    const db = await getDb();
 
     if (!a) return json({ name: 'DocLevel API', ok: true });
     if (a === 'health') return json({ status: 'ok' });
 
     if (a === 'categories') {
-      const cats = await db.collection('courses').distinct('category');
+      const db = await getDb();
+      const cats = await db.collection('courses').distinct('category', {
+        category: { $in: allowedCourseCategories },
+      });
       return json({ categories: cats.sort() });
     }
 
@@ -115,6 +57,7 @@ export async function GET(request, { params }) {
     }
 
     if (a === 'courses') {
+      const db = await getDb();
       if (b) {
         const course = await db.collection('courses').findOne({ id: b }, { projection: { _id: 0 } });
         if (!course) return err('Curso no encontrado', 404);
@@ -124,9 +67,12 @@ export async function GET(request, { params }) {
       const { searchParams } = new URL(request.url);
       const q = (searchParams.get('search') || '').trim();
       const cat = (searchParams.get('category') || '').trim();
-      const filter = {};
+      const filter = { category: { $in: allowedCourseCategories } };
 
-      if (cat && cat !== 'all') filter.category = cat;
+      if (cat && cat !== 'all') {
+        if (!allowedCourseCategories.includes(cat)) return json({ courses: [] });
+        filter.category = cat;
+      }
       if (q) {
         filter.$or = [
           { title: { $regex: q, $options: 'i' } },
@@ -155,7 +101,6 @@ export async function POST(request, { params }) {
   try {
     const path = params.path || [];
     const [a, b] = path;
-    const db = await getDb();
 
     if (a === 'seed') {
       if (process.env.NODE_ENV === 'production') {
@@ -171,6 +116,7 @@ export async function POST(request, { params }) {
     }
 
     if (a === 'auth' && b === 'login') {
+      const db = await getDb();
       const body = await request.json();
       const { email, password } = body || {};
       if (!email || !password) return err('Email y contraseña requeridos', 400);
@@ -186,6 +132,7 @@ export async function POST(request, { params }) {
     }
 
     if (a === 'contact') {
+      const db = await getDb();
       const body = await request.json();
       const { name, email, message } = body || {};
       if (!name || !email || !message) return err('Todos los campos son obligatorios', 400);
@@ -198,11 +145,15 @@ export async function POST(request, { params }) {
     if (a === 'courses') {
       const auth = await requireAdmin(request);
       if (!auth) return err('No autorizado', 401);
+      const db = await getDb();
 
       const body = await request.json();
-      const { title, description, category, video_url, banner_url, content } = body || {};
-      if (!title || !description || !category || !video_url || !banner_url) {
+      const { title, description, category, banner_url, content } = body || {};
+      if (!title || !description || !category || !banner_url) {
         return err('Faltan campos requeridos', 400);
+      }
+      if (!allowedCourseCategories.includes(category)) {
+        return err('Especialidad no permitida', 400);
       }
 
       const doc = {
@@ -210,7 +161,7 @@ export async function POST(request, { params }) {
         title,
         description,
         category,
-        video_url,
+        video_url: body.video_url || '',
         banner_url,
         content: content || '',
         status: body.status || 'available',
@@ -233,11 +184,11 @@ export async function PUT(request, { params }) {
   try {
     const path = params.path || [];
     const [a, b] = path;
-    const db = await getDb();
 
     if (a === 'courses' && b) {
       const auth = await requireAdmin(request);
       if (!auth) return err('No autorizado', 401);
+      const db = await getDb();
 
       const body = await request.json();
       const allowed = ['title', 'description', 'category', 'video_url', 'banner_url', 'content', 'featured', 'status'];
@@ -245,6 +196,9 @@ export async function PUT(request, { params }) {
 
       for (const k of allowed) {
         if (k in body) update[k] = body[k];
+      }
+      if (update.category && !allowedCourseCategories.includes(update.category)) {
+        return err('Especialidad no permitida', 400);
       }
 
       if (Object.keys(update).length === 0) return err('Sin cambios', 400);
@@ -272,11 +226,11 @@ export async function DELETE(request, { params }) {
   try {
     const path = params.path || [];
     const [a, b] = path;
-    const db = await getDb();
 
     if (a === 'courses' && b) {
       const auth = await requireAdmin(request);
       if (!auth) return err('No autorizado', 401);
+      const db = await getDb();
 
       const r = await db.collection('courses').deleteOne({ id: b });
       if (r.deletedCount === 0) return err('Curso no encontrado', 404);

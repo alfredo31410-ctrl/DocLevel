@@ -36,51 +36,51 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-black">
       <Navbar />
-      <div className="pt-28 pb-20 px-4 md:px-8 max-w-3xl mx-auto">
+      <div className="mx-auto max-w-3xl px-4 pb-20 pt-28 md:px-8">
         <div className="mb-10">
-          <div className="inline-flex items-center gap-2 text-teal-500 mb-3">
-            <Mail className="w-5 h-5" />
-            <span className="text-sm uppercase tracking-widest font-bold">Contacto</span>
+          <div className="mb-3 inline-flex items-center gap-2 text-teal-500">
+            <Mail className="h-5 w-5" />
+            <span className="text-sm font-bold uppercase tracking-widest">Contacto</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-white mb-3">Hablemos</h1>
+          <h1 className="mb-3 text-3xl font-black text-white md:text-5xl">Hablemos</h1>
           <p className="text-zinc-400">¿Tienes preguntas sobre un curso o quieres colaborar como doctor instructor? Envíanos un mensaje.</p>
         </div>
 
-        <form onSubmit={submit} className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 md:p-8 space-y-5">
+        <form onSubmit={submit} className="space-y-5 rounded-lg border border-zinc-800 bg-zinc-900 p-6 md:p-8">
           <div>
-            <Label className="text-zinc-300 mb-2 block">Nombre</Label>
+            <Label className="mb-2 block text-zinc-300">Nombre</Label>
             <Input
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="Tu nombre"
-              className="bg-zinc-950 border-zinc-800 text-white h-11"
+              className="h-11 border-zinc-800 bg-zinc-950 text-white"
             />
           </div>
           <div>
-            <Label className="text-zinc-300 mb-2 block">Email</Label>
+            <Label className="mb-2 block text-zinc-300">Email</Label>
             <Input
               required
               type="email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="tu@email.com"
-              className="bg-zinc-950 border-zinc-800 text-white h-11"
+              className="h-11 border-zinc-800 bg-zinc-950 text-white"
             />
           </div>
           <div>
-            <Label className="text-zinc-300 mb-2 block">Mensaje</Label>
+            <Label className="mb-2 block text-zinc-300">Mensaje</Label>
             <Textarea
               required
               rows={6}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               placeholder="¿En qué podemos ayudarte?"
-              className="bg-zinc-950 border-zinc-800 text-white"
+              className="border-zinc-800 bg-zinc-950 text-white"
             />
           </div>
-          <Button type="submit" disabled={sending} className="bg-teal-600 hover:bg-teal-700 text-white w-full md:w-auto">
-            <Send className="w-4 h-4 mr-2" />
+          <Button type="submit" disabled={sending} className="w-full bg-teal-600 text-white hover:bg-teal-700 md:w-auto">
+            <Send className="mr-2 h-4 w-4" />
             {sending ? 'Enviando...' : 'Enviar mensaje'}
           </Button>
         </form>

@@ -8,6 +8,8 @@ import { Clock, Search, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
+const categoryOrder = ['Pediatría', 'Odontología', 'Ginecología', 'Cardiología'];
+
 export default function CoursesPage() {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -16,7 +18,15 @@ export default function CoursesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/categories').then((r) => r.json()).then((d) => setCategories(d.categories || []));
+    fetch('/api/categories')
+      .then((r) => r.json())
+      .then((d) => {
+        const cats = d.categories || [];
+        setCategories([
+          ...categoryOrder.filter((c) => cats.includes(c)),
+          ...cats.filter((c) => !categoryOrder.includes(c)),
+        ]);
+      });
   }, []);
 
   useEffect(() => {

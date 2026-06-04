@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Play, Info } from 'lucide-react';
 import { CourseRow } from '@/components/CourseCard';
 import { getDb } from '@/lib/mongodb';
+import { allowedCourseCategories } from '@/lib/courseCategories';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,7 +12,7 @@ async function fetchCourses() {
     const db = await getDb();
     return await db
       .collection('courses')
-      .find({}, { projection: { _id: 0 } })
+      .find({ category: { $in: allowedCourseCategories } }, { projection: { _id: 0 } })
       .sort({ created_at: -1 })
       .toArray();
   } catch (e) {
@@ -29,17 +30,7 @@ export default async function HomePage() {
     return acc;
   }, {});
 
-  const categoryOrder = [
-    'Odontología',
-    'Pediatría',
-    'Cardiología',
-    'Medicina Interna',
-    'Urgencias',
-    'Ginecología',
-    'Dermatología',
-    'Nutrición Clínica',
-  ];
-
+  const categoryOrder = allowedCourseCategories;
   const orderedCats = [
     ...categoryOrder.filter((c) => byCategory[c]),
     ...Object.keys(byCategory).filter((c) => !categoryOrder.includes(c)),
@@ -100,7 +91,7 @@ export default async function HomePage() {
       )}
 
       <section className="relative z-20 -mt-6 px-4 pb-6 md:-mt-16 md:px-8">
-        <div className="mx-auto max-w-[1600px] rounded-2xl border border-white/10 bg-zinc-950/70 p-6 backdrop-blur">
+        <div className="mx-auto max-w-[1600px] rounded-lg border border-white/10 bg-zinc-950/70 p-6 backdrop-blur">
           <p className="text-sm uppercase tracking-[0.25em] text-teal-400">Propósito</p>
           <h2 className="mt-3 max-w-3xl text-2xl font-bold text-white md:text-3xl">
             Educación médica digital creada por especialistas, para especialistas.

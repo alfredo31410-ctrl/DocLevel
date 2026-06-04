@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Pediatría esencial: signos de alarma y manejo inicial",
+    "description": "Aprende a reconocer escenarios pediátricos que requieren atención inmediata, seguimiento estrecho o referencia oportuna.",
+    "category": "Pediatría",
+    "video_url": "https://www.youtube.com/watch?v=hqvqOYh5p5g",
+    "banner_url": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1600&q=80",
+    "content": "Incluye fiebre, dificultad respiratoria, hidratación, dolor abdominal y comunicación clara con madres, padres y cuidadores.",
+    "status": "available",
+    "featured": true
+  },
+  {
+    "title": "Odontología restauradora: diagnóstico y plan de tratamiento",
+    "description": "Curso práctico para ordenar la evaluación clínica, comunicar hallazgos y estructurar tratamientos odontológicos con criterio profesional.",
+    "category": "Odontología",
+    "video_url": "https://www.youtube.com/watch?v=QOzH1D4vIfc",
+    "banner_url": "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600&q=80",
+    "content": "Incluye diagnóstico inicial, fotografía clínica, criterios de restauración, comunicación con el paciente y seguimiento.",
+    "status": "available",
+    "featured": false
+  },
+  {
+    "title": "Ginecología práctica: consulta, prevención y referencia",
+    "description": "Programa enfocado en motivos frecuentes de consulta ginecológica, prevención, tamizaje y criterios de referencia.",
+    "category": "Ginecología",
+    "video_url": "",
+    "banner_url": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80",
+    "content": "Próximamente: prevención, tamizaje, síntomas frecuentes y referencia oportuna.",
+    "status": "coming_soon",
+    "featured": false
+  },
+  {
+    "title": "Cardiología clínica: ECG básico y valoración inicial",
+    "description": "Fortalece la lectura inicial del electrocardiograma y la toma de decisiones ante síntomas cardiovasculares frecuentes.",
+    "category": "Cardiología",
+    "video_url": "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+    "banner_url": "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1600&q=80",
+    "content": "Incluye ritmo, frecuencia, intervalos, datos de alarma, dolor torácico, palpitaciones y criterios de referencia.",
+    "status": "available",
+    "featured": false
+  }
+]
