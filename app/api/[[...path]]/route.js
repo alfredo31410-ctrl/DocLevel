@@ -3,6 +3,7 @@ import { getDb } from '@/lib/mongodb';
 import { signToken, getAuthFromRequest } from '@/lib/auth';
 import doclevelCourses from '@/lib/doclevelCourses.json';
 import { allowedCourseCategories } from '@/lib/courseCategories';
+import { fallbackCourses, filterFallbackCourses } from '@/lib/courseCatalog';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -43,11 +44,17 @@ export async function GET(request, { params }) {
     if (a === 'health') return json({ status: 'ok' });
 
     if (a === 'categories') {
-      const db = await getDb();
-      const cats = await db.collection('courses').distinct('category', {
-        category: { $in: allowedCourseCategories },
-      });
-      return json({ categories: cats.sort() });
+      try {
+        const db = await getDb();
+        const cats = await db.collection('courses').distinct('category', {
+          category: { $in: allowedCourseCategories },
+        });
+        return json({ categories: cats.sort() });
+      } catch (error) {
+        console.error('Categories database error', error);
+        const categories = [...new Set(fallbackCourses.map((course) => course.category))];
+        return json({ categories: categories.sort(), source: 'fallback' });
+      }
     }
 
     if (a === 'auth' && b === 'me') {
@@ -57,11 +64,18 @@ export async function GET(request, { params }) {
     }
 
     if (a === 'courses') {
-      const db = await getDb();
       if (b) {
-        const course = await db.collection('courses').findOne({ id: b }, { projection: { _id: 0 } });
-        if (!course) return err('Curso no encontrado', 404);
-        return json({ course });
+        try {
+          const db = await getDb();
+          const course = await db.collection('courses').findOne({ id: b }, { projection: { _id: 0 } });
+          if (!course) return err('Curso no encontrado', 404);
+          return json({ course });
+        } catch (error) {
+          console.error('Course database error', error);
+          const course = fallbackCourses.find((item) => item.id === b);
+          if (!course) return err('Curso no encontrado', 404);
+          return json({ course, source: 'fallback' });
+        }
       }
 
       const { searchParams } = new URL(request.url);
@@ -81,13 +95,22 @@ export async function GET(request, { params }) {
         ];
       }
 
-      const list = await db
-        .collection('courses')
-        .find(filter, { projection: { _id: 0 } })
-        .sort({ created_at: -1 })
-        .toArray();
+      try {
+        const db = await getDb();
+        const list = await db
+          .collection('courses')
+          .find(filter, { projection: { _id: 0 } })
+          .sort({ created_at: -1 })
+          .toArray();
 
-      return json({ courses: list });
+        return json({ courses: list });
+      } catch (error) {
+        console.error('Courses database error', error);
+        return json({
+          courses: filterFallbackCourses({ category: cat, search: q }),
+          source: 'fallback',
+        });
+      }
     }
 
     return err('Not found', 404);

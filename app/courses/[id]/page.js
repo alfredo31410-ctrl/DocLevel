@@ -4,20 +4,33 @@ import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, Clock, HeartPulse, ShieldCheck, UserRound } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { getDb } from '@/lib/mongodb';
+import { fallbackCourses } from '@/lib/courseCatalog';
 
 async function getCourse(id) {
-  const db = await getDb();
-  return await db.collection('courses').findOne({ id }, { projection: { _id: 0 } });
+  try {
+    const db = await getDb();
+    return await db.collection('courses').findOne({ id }, { projection: { _id: 0 } });
+  } catch (error) {
+    console.error('Course getCourse error', error);
+    return fallbackCourses.find((course) => course.id === id) || null;
+  }
 }
 
 async function getRelated(category, excludeId) {
-  const db = await getDb();
-  return await db
-    .collection('courses')
-    .find({ category, id: { $ne: excludeId } }, { projection: { _id: 0 } })
-    .sort({ created_at: -1 })
-    .limit(6)
-    .toArray();
+  try {
+    const db = await getDb();
+    return await db
+      .collection('courses')
+      .find({ category, id: { $ne: excludeId } }, { projection: { _id: 0 } })
+      .sort({ created_at: -1 })
+      .limit(6)
+      .toArray();
+  } catch (error) {
+    console.error('Course getRelated error', error);
+    return fallbackCourses
+      .filter((course) => course.category === category && course.id !== excludeId)
+      .slice(0, 6);
+  }
 }
 
 export default async function CoursePage({ params }) {

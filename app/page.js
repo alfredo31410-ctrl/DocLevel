@@ -4,6 +4,7 @@ import { Info, Play } from 'lucide-react';
 import { CourseRow } from '@/components/CourseCard';
 import { getDb } from '@/lib/mongodb';
 import { allowedCourseCategories } from '@/lib/courseCategories';
+import { fallbackCourses } from '@/lib/courseCatalog';
 import SiteFooter from '@/components/SiteFooter';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +19,7 @@ async function fetchCourses() {
       .toArray();
   } catch (e) {
     console.error('Home fetchCourses error', e);
-    return [];
+    return fallbackCourses;
   }
 }
 

@@ -9,7 +9,8 @@
         "build": "next build",
         "start": "next start",
         "admin:upsert": "node scripts/upsert-admin.js",
-        "courses:replace": "node scripts/replace-doclevel-courses.js"
+        "courses:replace": "node scripts/replace-doclevel-courses.js",
+        "mongodb:diagnose": "node scripts/diagnose-mongodb.js"
     },
     "dependencies": {
         "@hookform/resolvers": "^5.1.1",
