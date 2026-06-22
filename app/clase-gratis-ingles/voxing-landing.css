@@ -1,0 +1,297 @@
+﻿.voxing-landing-shell {
+  --voxing-navy: #07346a;
+  --voxing-navy-2: #05284f;
+  --voxing-ink: #09233f;
+  --voxing-teal: #18bcc3;
+  --voxing-teal-2: #0ea5ad;
+  --voxing-mint: #e8fbfb;
+  --voxing-line: #d8e7ee;
+  --voxing-muted: #66798b;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(24, 188, 195, 0.24), transparent 27%),
+    linear-gradient(145deg, #09233f 0%, #07346a 52%, #031a34 100%);
+  color: #fff;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.voxing-landing-shell * {
+  box-sizing: border-box;
+}
+
+.voxing-landing-shell button,
+.voxing-landing-shell input,
+.voxing-landing-shell textarea {
+  font: inherit;
+}
+
+.voxing-landing-shell a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.voxing-primary-button,
+.voxing-secondary-button,
+.voxing-text-button {
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.voxing-primary-button {
+  background: var(--voxing-teal);
+  border-radius: 8px;
+  box-shadow: 0 14px 32px rgba(24, 188, 195, 0.24);
+  color: var(--voxing-navy-2);
+  font-weight: 900;
+  min-height: 44px;
+  padding: 12px 18px;
+}
+
+.voxing-primary-button:hover {
+  background: #2dd7dd;
+}
+
+.voxing-secondary-button {
+  background: #fff;
+  border: 1px solid var(--voxing-line);
+  border-radius: 8px;
+  color: var(--voxing-navy);
+  font-weight: 900;
+  min-height: 42px;
+  padding: 10px 15px;
+}
+
+.voxing-text-button {
+  background: transparent;
+  color: #b8ecf0;
+  font-weight: 900;
+  padding: 8px 0;
+}
+
+.voxing-large {
+  min-height: 50px;
+  padding: 14px 20px;
+}
+
+.voxing-landing-topbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 78px;
+  padding: 18px clamp(18px, 5vw, 72px);
+}
+
+.voxing-landing-topbar img {
+  display: block;
+  height: auto;
+  max-width: 190px;
+  width: 38vw;
+}
+
+.voxing-landing-hero {
+  align-items: center;
+  display: grid;
+  gap: clamp(28px, 5vw, 76px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.75fr);
+  padding: clamp(40px, 7vw, 104px) clamp(20px, 5vw, 72px) clamp(32px, 5vw, 70px);
+}
+
+.voxing-landing-copy {
+  max-width: 900px;
+}
+
+.voxing-landing-kicker {
+  color: #7ff4f7;
+  font-size: 0.85rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.voxing-landing-copy h1 {
+  color: #fff;
+  font-size: clamp(2.65rem, 6vw, 6.25rem);
+  line-height: 0.94;
+  margin: 0 0 24px;
+  max-width: 980px;
+}
+
+.voxing-landing-copy p {
+  color: #d4eaf0;
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  line-height: 1.72;
+  max-width: 760px;
+}
+
+.voxing-landing-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 34px 0 22px;
+}
+
+.voxing-landing-primary {
+  min-width: 240px;
+}
+
+.voxing-landing-actions span {
+  color: #a9dce3;
+  font-weight: 850;
+}
+
+.voxing-landing-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.voxing-landing-points span {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: #fff;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 8px;
+  min-height: 42px;
+  padding: 9px 12px;
+}
+
+.voxing-landing-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  box-shadow: 0 26px 76px rgba(0, 0, 0, 0.24);
+  color: var(--voxing-ink);
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.voxing-landing-card-icon {
+  align-items: center;
+  background: var(--voxing-mint);
+  border-radius: 8px;
+  color: var(--voxing-teal-2);
+  display: flex;
+  height: 58px;
+  justify-content: center;
+  margin-bottom: 18px;
+  width: 58px;
+}
+
+.voxing-landing-card h2 {
+  color: var(--voxing-navy);
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+  line-height: 1.02;
+  margin: 0 0 18px;
+}
+
+.voxing-landing-card ul {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.voxing-landing-card li {
+  align-items: flex-start;
+  color: var(--voxing-muted);
+  display: flex;
+  gap: 10px;
+  line-height: 1.55;
+}
+
+.voxing-landing-card svg {
+  color: var(--voxing-teal-2);
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.voxing-landing-form-area {
+  align-items: start;
+  background: #f7fbfd;
+  border-radius: 8px 8px 0 0;
+  color: var(--voxing-ink);
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 0.78fr) minmax(320px, 1fr);
+  margin: 0 clamp(20px, 5vw, 72px);
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.voxing-landing-form-area h2 {
+  color: var(--voxing-navy);
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  line-height: 1.02;
+  margin: 0 0 12px;
+}
+
+.voxing-landing-form-copy p:not(.voxing-landing-kicker) {
+  color: var(--voxing-muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.voxing-landing-form-trigger {
+  align-self: center;
+  justify-self: start;
+}
+
+.voxing-activecampaign-panel {
+  background: #fff;
+  border: 1px solid var(--voxing-line);
+  border-radius: 8px;
+  box-shadow: 0 18px 52px rgba(7, 52, 106, 0.12);
+  min-height: 260px;
+  padding: 18px;
+}
+
+.voxing-activecampaign-panel ._form_255 {
+  min-height: 220px;
+}
+
+@media (max-width: 900px) {
+  .voxing-landing-hero,
+  .voxing-landing-form-area {
+    grid-template-columns: 1fr;
+  }
+
+  .voxing-landing-form-area {
+    margin: 0 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .voxing-landing-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .voxing-landing-topbar img {
+    max-width: 168px;
+    width: 58vw;
+  }
+
+  .voxing-landing-copy h1 {
+    font-size: clamp(2.45rem, 14vw, 4rem);
+  }
+
+  .voxing-landing-primary,
+  .voxing-landing-form-trigger {
+    width: 100%;
+  }
+
+  .voxing-activecampaign-panel {
+    padding: 12px;
+  }
+}
