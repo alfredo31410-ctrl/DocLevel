@@ -19,28 +19,67 @@ export default function CoursesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/categories')
-      .then((r) => r.json())
-      .then((d) => {
-        const cats = d.categories || [];
+    const ctrl = new AbortController();
+    let active = true;
+
+    async function loadCategories() {
+      try {
+        const response = await fetch('/api/categories', { signal: ctrl.signal });
+        const data = await response.json();
+        if (!active) return;
+
+        const cats = data.categories || [];
         setCategories([
           ...categoryOrder.filter((c) => cats.includes(c)),
           ...cats.filter((c) => !categoryOrder.includes(c)),
         ]);
-      });
+      } catch (error) {
+        if (error?.name === 'AbortError') return;
+        console.error('Categories fetch error', error);
+      }
+    }
+
+    loadCategories();
+
+    return () => {
+      active = false;
+      if (!ctrl.signal.aborted) {
+        ctrl.abort(new DOMException('Categories request cancelled', 'AbortError'));
+      }
+    };
   }, []);
 
   useEffect(() => {
     const ctrl = new AbortController();
-    setLoading(true);
-    const params = new URLSearchParams();
-    if (search) params.set('search', search);
-    if (category && category !== 'all') params.set('category', category);
-    fetch(`/api/courses?${params}`, { signal: ctrl.signal })
-      .then((r) => r.json())
-      .then((d) => setCourses(d.courses || []))
-      .finally(() => setLoading(false));
-    return () => ctrl.abort();
+    let active = true;
+
+    async function loadCourses() {
+      setLoading(true);
+      const params = new URLSearchParams();
+      if (search) params.set('search', search);
+      if (category && category !== 'all') params.set('category', category);
+
+      try {
+        const response = await fetch(`/api/courses?${params}`, { signal: ctrl.signal });
+        const data = await response.json();
+        if (active) setCourses(data.courses || []);
+      } catch (error) {
+        if (error?.name === 'AbortError') return;
+        console.error('Courses fetch error', error);
+        if (active) setCourses([]);
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+
+    loadCourses();
+
+    return () => {
+      active = false;
+      if (!ctrl.signal.aborted) {
+        ctrl.abort(new DOMException('Courses request cancelled', 'AbortError'));
+      }
+    };
   }, [search, category]);
 
   return (

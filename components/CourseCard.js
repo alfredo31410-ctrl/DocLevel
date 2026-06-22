@@ -3,18 +3,13 @@
 import Link from 'next/link';
 import { Clock, Play } from 'lucide-react';
 
-export function CourseCard({ course, size = 'md' }) {
+export function CourseCard({ course }) {
   const isComingSoon = course.status === 'coming_soon' || course.coming_soon;
-  const widths = {
-    sm: 'w-48 md:w-56',
-    md: 'w-60 md:w-72',
-    lg: 'w-72 md:w-80',
-  };
 
   return (
     <Link
       href={`/courses/${course.id}`}
-      className={`group relative flex-shrink-0 ${widths[size]} overflow-hidden rounded-md border border-[#119ff3]/10 bg-[#06111d] transition-all duration-300 hover:z-10 hover:border-[#119ff3]/45 hover:shadow-2xl hover:shadow-[#119ff3]/10 ${
+      className={`group relative block w-full overflow-hidden rounded-md border border-[#119ff3]/10 bg-[#06111d] transition-all duration-300 hover:z-10 hover:border-[#119ff3]/45 hover:shadow-2xl hover:shadow-[#119ff3]/10 ${
         isComingSoon ? 'opacity-55 saturate-50 hover:opacity-75' : 'hover:scale-[1.04]'
       }`}
     >
@@ -54,13 +49,13 @@ export function CourseRow({ title, courses }) {
   if (!courses?.length) return null;
   return (
     <section className="mb-10">
-      <h2 className="mb-3 px-4 text-lg font-bold text-white md:px-8 md:text-2xl">{title}</h2>
-      <div className="no-scrollbar flex snap-x gap-3 overflow-x-auto scroll-smooth px-4 pb-4 md:px-8">
-        {courses.map((c) => (
-          <div key={c.id} className="snap-start">
-            <CourseCard course={c} />
-          </div>
-        ))}
+      <div className="mx-auto w-full max-w-6xl px-4 md:px-8">
+        <h2 className="mb-3 text-center text-lg font-bold text-white md:text-2xl">{title}</h2>
+        <div className="grid w-full grid-cols-1 gap-4 pb-4">
+          {courses.map((c) => (
+            <CourseCard key={c.id} course={c} />
+          ))}
+        </div>
       </div>
     </section>
   );
