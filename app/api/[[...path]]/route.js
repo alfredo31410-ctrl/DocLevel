@@ -20,8 +20,15 @@ async function authenticateEnvironmentAdmin(email, password) {
   const configuredEmail = process.env.ADMIN_EMAIL?.toLowerCase().trim();
   const passwordHash = process.env.ADMIN_PASSWORD_HASH;
 
-  if (!configuredEmail || !passwordHash || email !== configuredEmail) return null;
-  const valid = await bcrypt.compare(password, passwordHash);
+  if (!configuredEmail || email !== configuredEmail) return null;
+
+  let valid = false;
+  if (passwordHash) {
+    valid = await bcrypt.compare(password, passwordHash).catch(() => false);
+  }
+  if (!valid && process.env.NODE_ENV !== 'production') {
+    valid = password === process.env.ADMIN_PASSWORD;
+  }
   if (!valid) return null;
 
   return { id: 'environment-admin', email: configuredEmail };
