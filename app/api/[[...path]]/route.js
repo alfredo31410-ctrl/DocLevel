@@ -16,6 +16,17 @@ async function requireAdmin(request) {
   return auth;
 }
 
+async function authenticateEnvironmentAdmin(email, password) {
+  const configuredEmail = process.env.ADMIN_EMAIL?.toLowerCase().trim();
+  const passwordHash = process.env.ADMIN_PASSWORD_HASH;
+
+  if (!configuredEmail || !passwordHash || email !== configuredEmail) return null;
+  const valid = await bcrypt.compare(password, passwordHash);
+  if (!valid) return null;
+
+  return { id: 'environment-admin', email: configuredEmail };
+}
+
 async function seedIfEmpty() {
   const db = await getDb();
   const courses = db.collection('courses');
@@ -139,16 +150,27 @@ export async function POST(request, { params }) {
     }
 
     if (a === 'auth' && b === 'login') {
-      const db = await getDb();
       const body = await request.json();
       const { email, password } = body || {};
       if (!email || !password) return err('Email y contraseña requeridos', 400);
 
-      const admin = await db.collection('admins').findOne({ email: email.toLowerCase().trim() });
-      if (!admin) return err('Credenciales inválidas', 401);
+      const normalizedEmail = email.toLowerCase().trim();
+      let admin = null;
 
-      const ok = await bcrypt.compare(password, admin.password);
-      if (!ok) return err('Credenciales inválidas', 401);
+      try {
+        const db = await getDb();
+        const databaseAdmin = await db.collection('admins').findOne({ email: normalizedEmail });
+        if (databaseAdmin && await bcrypt.compare(password, databaseAdmin.password)) {
+          admin = databaseAdmin;
+        }
+      } catch (error) {
+        console.error('Admin database authentication unavailable', error);
+      }
+
+      if (!admin) {
+        admin = await authenticateEnvironmentAdmin(normalizedEmail, password);
+      }
+      if (!admin) return err('Credenciales inválidas', 401);
 
       const token = signToken({ id: admin.id, email: admin.email, role: 'admin' });
       return json({ token, user: { id: admin.id, email: admin.email, role: 'admin' } });
