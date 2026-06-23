@@ -42,7 +42,10 @@ export default async function CoursePage({ params }) {
 
   const related = await getRelated(course.category, course.id);
   const isComingSoon = course.status === 'coming_soon' || course.coming_soon;
-  const registrationUrl = course.landing_url || '/papa-primerizo';
+  const registrationUrl =
+    course.id === '048a3d70-3e78-4939-bc37-b61f1a8b3445'
+      ? '/landings/papa-primerizo/gracias'
+      : course.landing_url || '/landings/papa-primerizo';
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#02070d_0%,#000_45%,#030912_100%)]">

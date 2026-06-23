@@ -25,11 +25,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/papa-primerizo",
+        source: "/landings/papa-primerizo",
         destination: "https://doclevel-landings.vercel.app",
       },
       {
-        source: "/papa-primerizo/:path*",
+        source: "/landings/papa-primerizo/:path*",
         destination: "https://doclevel-landings.vercel.app/:path*",
       },
     ];
