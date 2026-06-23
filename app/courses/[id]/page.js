@@ -44,7 +44,7 @@ export default async function CoursePage({ params }) {
   const isComingSoon = course.status === 'coming_soon' || course.coming_soon;
   const registrationUrl =
     course.id === '048a3d70-3e78-4939-bc37-b61f1a8b3445'
-      ? '/landings/papa-primerizo/gracias'
+      ? '/landings/papa-primerizo'
       : course.landing_url || '/landings/papa-primerizo';
 
   return (
