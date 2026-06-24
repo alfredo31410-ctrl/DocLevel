@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Clock, Loader2, Search } from 'lucide-react';
+import { Clock, Loader2, Play, Search } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import SiteFooter from '@/components/SiteFooter';
@@ -163,10 +163,14 @@ function CourseGridCard({ course }) {
   const isComingSoon = course.status === 'coming_soon' || course.coming_soon;
 
   return (
-    <Link
-      href={`/courses/${course.id}`}
-      className={cn(
-        'group overflow-hidden rounded-lg border border-[#119ff3]/10 bg-[#06111d] transition hover:border-[#119ff3]/45 hover:ring-2 hover:ring-[#119ff3]/30',
+  <Link
+    href={
+      course.title === 'Las Primeras Horas de tu Bebé'
+        ? '/landings/papa-primerizo-pago'
+        : `/courses/${course.id}`
+    }
+    className={cn(
+        'group flex min-h-[390px] flex-col overflow-hidden rounded-lg border border-[#119ff3]/10 bg-[#06111d] transition hover:border-[#119ff3]/45 hover:ring-2 hover:ring-[#119ff3]/30 lg:min-h-[370px] xl:min-h-[405px]',
         isComingSoon && 'opacity-55 saturate-50 hover:opacity-75'
       )}
     >
@@ -184,9 +188,21 @@ function CourseGridCard({ course }) {
           </div>
         )}
       </div>
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         <h3 className={cn('line-clamp-2 font-semibold text-white', !isComingSoon && 'mb-2')}>{course.title}</h3>
         {!isComingSoon && <p className="line-clamp-3 text-sm text-zinc-400">{course.description}</p>}
+        {!isComingSoon && (
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-[#119ff3]/10 pt-4">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Inversión</p>
+              <p className="text-xl font-black leading-none text-[#ff3131]">{course.price || '$397 MXN'}</p>
+            </div>
+            <span className="inline-flex min-h-10 items-center gap-2 rounded-md bg-[#119ff3] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#119ff3]/10 transition group-hover:bg-[#38b6ff]">
+              <Play className="h-4 w-4 fill-white" />
+              Ver curso
+            </span>
+          </div>
+        )}
       </div>
     </Link>
   );

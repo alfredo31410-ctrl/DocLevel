@@ -3,7 +3,7 @@ import { getDb } from '@/lib/mongodb';
 import { signToken, getAuthFromRequest } from '@/lib/auth';
 import doclevelCourses from '@/lib/doclevelCourses.json';
 import { allowedCourseCategories } from '@/lib/courseCategories';
-import { fallbackCourses, filterFallbackCourses } from '@/lib/courseCatalog';
+import { fallbackCourses, filterFallbackCourses, normalizeCourse } from '@/lib/courseCatalog';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -87,7 +87,7 @@ export async function GET(request, { params }) {
           const db = await getDb();
           const course = await db.collection('courses').findOne({ id: b }, { projection: { _id: 0 } });
           if (!course) return err('Curso no encontrado', 404);
-          return json({ course });
+          return json({ course: normalizeCourse(course) });
         } catch (error) {
           console.error('Course database error', error);
           const course = fallbackCourses.find((item) => item.id === b);
@@ -121,7 +121,7 @@ export async function GET(request, { params }) {
           .sort({ created_at: -1 })
           .toArray();
 
-        return json({ courses: list });
+        return json({ courses: list.map(normalizeCourse) });
       } catch (error) {
         console.error('Courses database error', error);
         return json({

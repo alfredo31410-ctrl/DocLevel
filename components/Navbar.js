@@ -16,7 +16,7 @@ export default function Navbar() {
   const pathname = usePathname();
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#119ff3]/10 bg-gradient-to-b from-black via-[#020912]/90 to-transparent backdrop-blur-sm">
-      <div className="mx-auto flex max-w-[1600px] items-center gap-8 px-4 py-4 md:px-8">
+      <div className="mx-auto flex max-w-[1240px] items-center gap-7 px-4 py-3 md:px-6">
         <Link href="/" className="group flex items-center">
           <Image
             src="/brand/doclevel-logo.png"
@@ -24,10 +24,10 @@ export default function Navbar() {
             width={190}
             height={72}
             priority
-            className="h-12 w-auto object-contain transition duration-300 group-hover:scale-[1.02] md:h-14"
+            className="h-10 w-auto object-contain transition duration-300 group-hover:scale-[1.02] md:h-11"
           />
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-5 md:flex">
           {links.map((l) => (
             <Link
               key={l.href}

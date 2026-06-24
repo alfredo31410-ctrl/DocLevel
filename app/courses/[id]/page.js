@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, Clock, HeartPulse, ShieldCheck, UserRound } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { getDb } from '@/lib/mongodb';
-import { fallbackCourses } from '@/lib/courseCatalog';
+import { fallbackCourses, normalizeCourse } from '@/lib/courseCatalog';
 
 async function getCourse(id) {
   try {
     const db = await getDb();
-    return await db.collection('courses').findOne({ id }, { projection: { _id: 0 } });
+    const course = await db.collection('courses').findOne({ id }, { projection: { _id: 0 } });
+    return normalizeCourse(course);
   } catch (error) {
     console.error('Course getCourse error', error);
     return fallbackCourses.find((course) => course.id === id) || null;
@@ -19,12 +20,13 @@ async function getCourse(id) {
 async function getRelated(category, excludeId) {
   try {
     const db = await getDb();
-    return await db
+    const related = await db
       .collection('courses')
       .find({ category, id: { $ne: excludeId } }, { projection: { _id: 0 } })
       .sort({ created_at: -1 })
       .limit(6)
       .toArray();
+    return related.map(normalizeCourse);
   } catch (error) {
     console.error('Course getRelated error', error);
     return fallbackCourses
@@ -44,8 +46,8 @@ export default async function CoursePage({ params }) {
   const isComingSoon = course.status === 'coming_soon' || course.coming_soon;
   const registrationUrl =
     course.id === '048a3d70-3e78-4939-bc37-b61f1a8b3445'
-      ? '/landings/papa-primerizo'
-      : course.landing_url || '/landings/papa-primerizo';
+      ? '/landings/papa-primerizo-pago'
+      : course.landing_url || '/landings/papa-primerizo-pago';
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#02070d_0%,#000_45%,#030912_100%)]">
@@ -85,7 +87,7 @@ export default async function CoursePage({ params }) {
                     </>
                   ) : (
                     <Link href={registrationUrl} className="rounded-md bg-[#119ff3] px-7 py-3 font-semibold text-white shadow-lg shadow-[#119ff3]/20 transition hover:bg-[#38b6ff]">
-                      Registrarme
+                      Ver curso
                     </Link>
                   )}
                 </div>
@@ -100,7 +102,7 @@ export default async function CoursePage({ params }) {
               <div className="grid gap-3 sm:grid-cols-3">
                 <InfoTile icon={<UserRound className="h-5 w-5" />} label="Experto" value={course.expert || 'Especialista DocLevel'} />
                 <InfoTile icon={<CalendarCheck className="h-5 w-5" />} label="Duración" value={course.duration || 'Acceso digital'} />
-                <InfoTile icon={<ShieldCheck className="h-5 w-5" />} label="Inversión" value={course.price || 'Registro abierto'} />
+                <InfoTile icon={<ShieldCheck className="h-5 w-5" />} label="Inversión" value={course.price || '$397 MXN'} />
               </div>
             )}
 
@@ -135,10 +137,10 @@ export default async function CoursePage({ params }) {
               <div className="rounded-lg border border-[#119ff3]/15 bg-[#06111d] p-6">
                 <h3 className="text-lg font-bold text-white">Inscripción</h3>
                 <p className="mt-3 text-sm leading-6 text-zinc-400">
-                  Continúa al landing de papás primerizos para ver la oferta, registro y próximos pasos del programa.
+                  Continúa al landing de papás primerizos para revisar los detalles del curso, confirmar tu pago y completar tu inscripción.
                 </p>
                 <Link href={registrationUrl} className="mt-5 inline-flex w-full justify-center rounded-md bg-[#119ff3] px-5 py-3 font-semibold text-white transition hover:bg-[#38b6ff]">
-                  Registrarme ahora
+                  Ver curso
                 </Link>
               </div>
             )}

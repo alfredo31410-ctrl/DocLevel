@@ -40,6 +40,18 @@ export function CourseCard({ course }) {
           <div className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-[#4dbdff]">{course.category}</div>
         )}
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-white md:text-base">{course.title}</h3>
+        {!isComingSoon && (
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-[#119ff3]/10 pt-3">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Inversión</p>
+              <p className="text-lg font-black text-[#ff3131]">{course.price || '$397 MXN'}</p>
+            </div>
+            <span className="inline-flex min-h-9 items-center gap-2 rounded-md bg-[#119ff3] px-3 text-xs font-semibold text-white transition group-hover:bg-[#38b6ff]">
+              <Play className="h-4 w-4 fill-white" />
+              Ver curso
+            </span>
+          </div>
+        )}
       </div>
     </Link>
   );

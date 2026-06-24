@@ -1,6 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+const dns = require('dns');
 const { MongoClient } = require('mongodb');
+
+// Some ISP/router DNS resolvers reject the SRV records used by MongoDB Atlas.
+// Use public resolvers for this maintenance script so mongodb+srv keeps working.
+dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 function loadLocalEnv() {
   const envPath = path.join(process.cwd(), '.env.local');
