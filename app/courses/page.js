@@ -166,7 +166,7 @@ function CourseGridCard({ course }) {
   <Link
     href={
       course.title === 'Las Primeras Horas de tu Bebé'
-        ? '/landings/papa-primerizo-pago'
+        ? '/pagina-de-pago/papa-primerizo-inscripcion'
         : `/courses/${course.id}`
     }
     className={cn(
@@ -195,7 +195,7 @@ function CourseGridCard({ course }) {
           <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-[#119ff3]/10 pt-4">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Inversión</p>
-              <p className="text-xl font-black leading-none text-[#ff3131]">{course.price || '$397 MXN'}</p>
+              <p className="text-xl font-black leading-none text-[#4fe5ff]">{course.price || '487 MXN'}</p>
             </div>
             <span className="inline-flex min-h-10 items-center gap-2 rounded-md bg-[#119ff3] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#119ff3]/10 transition group-hover:bg-[#38b6ff]">
               <Play className="h-4 w-4 fill-white" />

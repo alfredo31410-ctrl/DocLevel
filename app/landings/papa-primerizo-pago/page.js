@@ -21,18 +21,18 @@ export const metadata = {
 const paymentHref = 'https://pay.hotmart.com/P106439324N?off=5q438z0i&checkoutMode=10&bid=1782322313291';
 
 const included = [
-  'Que es normal en las primeras horas de vida',
-  'Senales de alarma que si requieren atencion medica',
-  'Cuidados practicos desde el nacimiento',
-  'Alimentacion, sueno, llanto y cambios esperados',
-  'Guia clara para vivir el primer mes con mas seguridad',
-  'Criterio pediatrico explicado en lenguaje sencillo',
+  'Que es normal en las primeras horas de vida.',
+  'Señales de alarma que sí requieren atención médica',
+  'Cuidados prácticos desde el nacimiento',
+  'Alimentación, sueño, llanto y cambios esperados',
+  'Guía clara para vivir el primer mes con más seguridad',
+  'Criterio pediátrico explicado en lenguaje sencillo',
 ];
 
 const modules = [
-  'Primer contacto con tu bebe y adaptacion al nacimiento',
-  'Respiracion, coloracion, temperatura y signos normales',
-  'Lactancia, evacuaciones, sueno y cuidados en casa',
+  'Primer contacto con tu bebé y adaptación al nacimiento',
+  'Respiración, coloración, temperatura y signos normales',
+  'Lactancia, evacuaciones, sueño y cuidados en casa',
   'Cuando observar, cuando llamar y cuando acudir a urgencias',
 ];
 
@@ -50,22 +50,21 @@ export default function PapaPrimerizoPagoLanding() {
             <div className="pt-3 text-center lg:text-left">
               <div className="mb-6 flex flex-wrap justify-center gap-3 lg:justify-start">
                 <span className="inline-flex items-center rounded-full border border-[#4ee7ef]/55 bg-[#4ee7ef]/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-[#4ee7ef]">
-                  Pediatria / Papas primerizos
+                  Pediatría / Papás primerizos Curso en línea
                 </span>
                 <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-zinc-200">
-                  Curso en linea
+                  Curso en línea
                 </span>
               </div>
 
               <h1 className="mx-auto max-w-4xl text-[2.75rem] font-black uppercase leading-[0.95] tracking-normal text-white sm:text-6xl md:text-7xl lg:mx-0">
-                Las primeras horas de tu bebe
+                Las primeras horas de tu  bebé
               </h1>
               <p className="mx-auto mt-5 max-w-2xl text-lg font-black uppercase leading-snug text-white md:text-2xl lg:mx-0">
-                Aprende que es normal, que debe preocuparte y como cuidar a tu bebe desde el nacimiento
+                Aprende qué es normal, qué debe preocuparte y cómo cuidar a tu bebé desde el nacimiento.
               </p>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-300 md:text-lg lg:mx-0">
-                Una guia pediatrica directa para papas primerizos que quieren tomar decisiones con
-                calma, entender las senales importantes y sentirse acompanados durante el primer mes.
+                Una guía pediátrica directa para papás primerizos que quieren tomar decisiones con calma, entender las señales importantes y sentirse acompañados durante el primer mes.
               </p>
 
               <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
@@ -78,7 +77,7 @@ export default function PapaPrimerizoPagoLanding() {
                 </Link>
               </div>
               <p className="mt-4 text-center text-sm font-semibold text-[#00ddff] lg:text-left">
-                Acceso sencillo: toca el boton, solicita tu pago y completa tu inscripcion.
+                Acceso sencillo: toca el botón, solicita tu pago y completa tu inscripción.
               </p>
             </div>
 
@@ -90,19 +89,19 @@ export default function PapaPrimerizoPagoLanding() {
                 <img
                   src="/brand/Copia de BANNER - CAMPAÑA.png"
                   alt="Curso Las Primeras Horas de tu Bebe"
-                  className="aspect-[16/10] w-full object-cover"
+                  className="aspect-[16/10] w-full object-cover object-[50%_50%]"
                 />
               </div>
 
               <div className="mt-6 border border-[#4ee7ef]/35 bg-[#041324] p-5">
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-zinc-400">Inversion</p>
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-zinc-400">Inversión</p>
                 <div className="mt-2 flex items-end gap-2">
                   <span className="text-5xl font-black leading-none text-[#4ee7ef]">$487</span>
                   <span className="pb-1 text-lg font-black text-white">MXN</span>
                 </div>
                 <p className="mt-5 text-sm leading-6 text-zinc-300">
                   Impartido por el <strong className="text-white">Dr. Raul G. de Lira Lopez</strong>,
-                  especialista en pediatria.
+                  Especialista en pediatría.
                 </p>
                 <PaymentButton href={paymentHref} label="Inscribirme ya!" className="mt-6" />
               </div>
@@ -126,11 +125,11 @@ export default function PapaPrimerizoPagoLanding() {
             <div>
               <p className="text-sm font-black uppercase tracking-[0.24em] text-[#4ee7ef]">Contenido del curso</p>
               <h2 className="mt-4 text-3xl font-black leading-tight text-white md:text-5xl">
-                Una guia practica para cuidar a tu bebe con mas seguridad.
+                Una guía práctica para cuidar a tu bebé con más seguridad.
               </h2>
               <p className="mt-5 text-base leading-7 text-zinc-300">
-                Pensado para resolver dudas reales de los primeros dias: que observar, que no
-                normalizar y como actuar sin entrar en panico.
+                Pensado para resolver dudas reales de los primeros días: que observar, qué no
+                Normalizar y cómo actuar sin entrar en pánico.
               </p>
               <PaymentButton href={paymentHref} label="Quiero pagar mi acceso" className="mt-7" />
             </div>
@@ -173,13 +172,13 @@ export default function PapaPrimerizoPagoLanding() {
             <div>
               <div className="mb-4 inline-flex items-center gap-2 text-[#4ee7ef]">
                 <Baby className="h-5 w-5" />
-                <span className="text-xs font-black uppercase tracking-[0.22em]">Inscripcion abierta</span>
+                <span className="text-xs font-black uppercase tracking-[0.22em]">Inscripción abierta</span>
               </div>
               <h2 className="text-3xl font-black leading-tight md:text-4xl">
                 Empieza hoy por $487 MXN.
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-300 md:text-base">
-                Da el siguiente paso y solicita tu acceso al curso de papas primerizos de DocLevel.
+                Da el siguiente paso y solicita tu acceso al curso de papás primerizos de DocLevel.
               </p>
             </div>
             <PaymentButton href={paymentHref} label="Inscribirme ya" />
@@ -224,13 +223,10 @@ function PaymentStrip() {
   return (
     <div className="grid gap-4 border border-[#4ee7ef]/35 bg-[#061b34] p-5 md:grid-cols-[1fr_auto] md:items-center">
       <div>
-        <p className="text-sm font-black uppercase tracking-[0.2em] text-[#4ee7ef]">Inscripcion rapida</p>
+        <p className="text-sm font-black uppercase tracking-[0.2em] text-[#4ee7ef]">Inscripción rápida</p>
         <h2 className="mt-2 text-2xl font-black leading-tight text-white md:text-3xl">
           Accede al curso por $487 MXN.
         </h2>
-        <p className="mt-2 text-base leading-7 text-zinc-300">
-          Boton grande y visible para facilitar el pago desde telefono.
-        </p>
       </div>
       <PaymentButton href={paymentHref} label="Inscribirme ya!" />
     </div>

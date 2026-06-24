@@ -11,7 +11,6 @@ export default function SiteFooter() {
           <Link href="/aviso-legal" className="hover:text-white">Aviso legal</Link>
           <Link href="/privacidad" className="hover:text-white">Política de privacidad</Link>
           <Link href="/cookies" className="hover:text-white">Política de cookies</Link>
-          <Link href="/mapa-del-sitio" className="hover:text-white">Mapa del sitio</Link>
         </div>
       </div>
     </footer>
