@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
@@ -8,6 +8,7 @@ export function middleware(request) {
   }
 
   const isPrefetch =
+    request.method === 'HEAD' ||
     request.headers.get('next-router-prefetch') === '1' ||
     request.headers.get('purpose') === 'prefetch' ||
     request.headers.get('sec-purpose') === 'prefetch';
@@ -16,23 +17,27 @@ export function middleware(request) {
     return new NextResponse(null, { status: 204 });
   }
 
-const basicAuth = request.headers.get('authorization');
-const user = process.env.ADMIN_EMAIL;
-const password = process.env.ADMIN_PASSWORD;
+  const basicAuth = request.headers.get('authorization');
+  const user = process.env.ADMIN_EMAIL;
+  const password = process.env.ADMIN_PASSWORD;
 
-  if (basicAuth) {
-    const authValue = basicAuth.split(' ')[1];
-    const [inputUser, inputPassword] = atob(authValue).split(':');
+  if (basicAuth?.startsWith('Basic ')) {
+    try {
+      const authValue = basicAuth.split(' ')[1];
+      const [inputUser, inputPassword] = atob(authValue).split(':');
 
-    if (inputUser === user && inputPassword === password) {
-      return NextResponse.next();
+      if (inputUser === user && inputPassword === password) {
+        return NextResponse.next();
+      }
+    } catch (error) {
+      // Fall through to the browser login prompt.
     }
   }
 
-  return new NextResponse('Acceso restringido', {
+  return new NextResponse(null, {
     status: 401,
     headers: {
-      'WWW-Authenticate': 'Basic realm="Admin DocLevel"',
+      'WWW-Authenticate': 'Basic realm="DocLevel Admin"',
     },
   });
 }

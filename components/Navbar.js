@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -46,9 +46,9 @@ export default function Navbar() {
           <Search className="h-4 w-4" />
           <span>Buscar</span>
         </Link>
-        <Link href="/admin" className="rounded-md border border-[#119ff3]/25 px-3 py-1.5 text-xs text-zinc-400 transition hover:border-[#119ff3]/60 hover:text-white md:text-sm">
+        <a href="/admin" className="rounded-md border border-[#119ff3]/25 px-3 py-1.5 text-xs text-zinc-400 transition hover:border-[#119ff3]/60 hover:text-white md:text-sm">
           Admin
-        </Link>
+        </a>
       </div>
     </header>
   );
