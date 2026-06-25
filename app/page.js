@@ -81,12 +81,12 @@ export default async function HomePage() {
                 {featured.price && (
                   <div className="mb-4 inline-flex max-w-full items-end gap-3 rounded-md border border-[#119ff3]/20 bg-black/35 px-4 py-2.5 backdrop-blur">
                     <span className="text-xs font-bold uppercase tracking-widest text-zinc-400">Inversión</span>
-                    <span className="text-lg font-black leading-none text-[#ff3131] sm:text-xl">{featured.price}</span>
+                    <span className="text-lg font-black leading-none text-[#54D9E8] sm:text-xl">{featured.price}</span>
                   </div>
                 )}
                 <div className="flex flex-wrap gap-3">
                   <Link
-                      href="/landings/papa-primerizo-pago"
+                      href="/pagina-de-pago/papa-primerizo-inscripcion"
                     className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#119ff3] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#119ff3]/20 transition hover:bg-[#38b6ff] sm:px-6"
                   >
                     <Play className="h-4 w-4 fill-white" /> Ver curso
