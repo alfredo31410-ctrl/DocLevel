@@ -40,7 +40,7 @@ export default function PapaPrimerizoPagoLanding() {
       <main>
         <div className="sticky top-0 z-[70] border-b border-[#4ee7ef]/35 bg-[#061b34]/95 px-4 py-3 text-center shadow-[0_8px_28px_rgba(0,0,0,0.35)] backdrop-blur md:py-4">
           <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#4ee7ef] md:text-sm">Entrenamiento en vivo DocLevel</p>
-          <p className="mt-1 text-lg font-black leading-tight text-white md:text-2xl">3 días en vivo: 1, 2 y 3 de julio · 2 horas diarias · 12 pm hora CDMX</p>
+          <p className="mt-1 text-lg font-black leading-tight text-white md:text-2xl">3 días en vivo: 1, 2 y 3 de julio del 2026 · 2 horas diarias · 12 pm hora CDMX</p>
           <p className="mx-auto mt-2 inline-flex max-w-3xl items-center justify-center rounded-md border border-[#4ee7ef]/45 bg-[#4ee7ef]/12 px-3 py-2 text-xs font-black uppercase leading-snug text-[#dffcff] md:mt-3 md:px-4 md:text-base">
             Incluye acceso a las grabaciones durante 1 año
           </p>
@@ -112,7 +112,7 @@ export default function PapaPrimerizoPagoLanding() {
         <section className="px-4 py-12 md:px-8">
           <div className="mx-auto grid max-w-[1120px] gap-4 md:grid-cols-4">
             <InfoCard icon={<Stethoscope className="h-6 w-6" />} label="Experto" value="Dr. Raúl G. de Lira López" />
-            <InfoCard icon={<CalendarCheck className="h-6 w-6" />} label="Fechas" value="1, 2 y 3 de julio" />
+            <InfoCard icon={<CalendarCheck className="h-6 w-6" />} label="Fechas" value="1, 2 y 3 de julio del 2026" />
             <InfoCard icon={<PlayCircle className="h-6 w-6" />} label="En vivo" value="2 horas diarias" />
             <InfoCard icon={<ShieldCheck className="h-6 w-6" />} label="Precio" value="$487 MXN" />
           </div>
@@ -124,7 +124,7 @@ export default function PapaPrimerizoPagoLanding() {
         <section id="contenido" className="px-4 py-10 md:px-8">
           <div className="mx-auto grid max-w-[1120px] gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.24em] text-[#4ee7ef]">Contenido del curso</p>
+              <p className="text-sm font-black uppercase tracking-[0.24em] text-[#4ee7ef]">Contenido del entrenamiento</p>
               <h2 className="mt-4 text-3xl font-black leading-tight text-white md:text-5xl">
                 Un entrenamiento para cuidar a tu bebé con confianza.
               </h2>
@@ -178,7 +178,7 @@ export default function PapaPrimerizoPagoLanding() {
                 Empieza hoy por $487 MXN.
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-300 md:text-base">
-                Da el siguiente paso y solicita tu acceso al curso de papás primerizos de DocLevel.
+                Da el siguiente paso y solicita tu acceso al entrenamiento de papás primerizos de DocLevel.
               </p>
             </div>
             <PaymentButton href={paymentHref} label="¡Inscribirme ya!" />
@@ -188,14 +188,14 @@ export default function PapaPrimerizoPagoLanding() {
       <div className="fixed inset-x-0 bottom-0 z-[60] border-t border-[#4ee7ef]/30 bg-[#020711]/95 p-3 shadow-[0_-12px_28px_rgba(0,0,0,0.45)] backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md items-center gap-3">
           <div className="min-w-0">
-            <p className="text-xs font-bold uppercase tracking-wide text-zinc-400">Curso completo</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-zinc-400">Entrenamiento completo</p>
             <p className="text-lg font-black leading-none text-[#4ee7ef]">$487 MXN</p>
           </div>
           <Link
             href={paymentHref}
             className="inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-md bg-[#4ee7ef] px-4 py-3 text-center text-base font-black uppercase text-[#00111f] shadow-[0_0_24px_rgba(78,231,239,0.35)]"
           >
-            Pagar
+            ¡Inscribirme ya!
             <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
@@ -223,7 +223,7 @@ function PaymentStrip() {
       <div>
         <p className="text-sm font-black uppercase tracking-[0.2em] text-[#4ee7ef]">Inscripción rápida</p>
         <h2 className="mt-2 text-2xl font-black leading-tight text-white md:text-3xl">
-          Accede al curso por $487 MXN.
+          Accede al entrenamiento por $487 MXN.
         </h2>
       </div>
       <PaymentButton href={paymentHref} label="¡Inscribirme ya!" />
