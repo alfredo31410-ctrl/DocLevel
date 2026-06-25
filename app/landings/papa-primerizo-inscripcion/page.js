@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import {
   ArrowRight,
   Baby,
@@ -38,11 +38,11 @@ export default function PapaPrimerizoPagoLanding() {
   return (
     <div className="min-h-screen bg-[#020711] pb-24 text-white md:pb-0">
       <main>
-        <div className="relative z-20 border-b border-[#4ee7ef]/35 bg-[#061b34] px-4 py-4 text-center shadow-[0_8px_28px_rgba(0,0,0,0.35)]">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#4ee7ef]">Entrenamiento en vivo DocLevel</p>
-          <p className="mt-1 text-xl font-black leading-tight text-white md:text-2xl">3 días en vivo: 1, 2 y 3 de julio · 2 horas diarias · 12 PM</p>
-          <p className="mx-auto mt-3 inline-flex max-w-3xl items-center justify-center rounded-md border border-[#4ee7ef]/45 bg-[#4ee7ef]/12 px-4 py-2 text-sm font-black uppercase leading-snug text-[#dffcff] md:text-base">
-            También incluye acceso a las grabaciones durante 1 año
+        <div className="sticky top-0 z-[70] border-b border-[#4ee7ef]/35 bg-[#061b34]/95 px-4 py-3 text-center shadow-[0_8px_28px_rgba(0,0,0,0.35)] backdrop-blur md:py-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#4ee7ef] md:text-sm">Entrenamiento en vivo DocLevel</p>
+          <p className="mt-1 text-lg font-black leading-tight text-white md:text-2xl">3 días en vivo: 1, 2 y 3 de julio · 2 horas diarias · 12 pm hora CDMX</p>
+          <p className="mx-auto mt-2 inline-flex max-w-3xl items-center justify-center rounded-md border border-[#4ee7ef]/45 bg-[#4ee7ef]/12 px-3 py-2 text-xs font-black uppercase leading-snug text-[#dffcff] md:mt-3 md:px-4 md:text-base">
+            Incluye acceso a las grabaciones durante 1 año
           </p>
         </div>
         <section className="relative overflow-hidden px-4 pb-16 pt-8 md:px-8 md:pb-20 lg:pt-12">
@@ -126,12 +126,12 @@ export default function PapaPrimerizoPagoLanding() {
             <div>
               <p className="text-sm font-black uppercase tracking-[0.24em] text-[#4ee7ef]">Contenido del curso</p>
               <h2 className="mt-4 text-3xl font-black leading-tight text-white md:text-5xl">
-                Una guía práctica para cuidar a tu bebé con confianza.
+                Un entrenamiento para cuidar a tu bebé con confianza.
               </h2>
               <p className="mt-5 text-base leading-7 text-zinc-300">
                 Aprende a comprender las necesidades de tu bebé durante su primer mes de vida, identificar los cambios normales, reconocer las señales de alerta y brindarle los cuidados que necesita para favorecer su bienestar desde el nacimiento.
               </p>
-              <PaymentButton href={paymentHref} label="Quiero pagar mi acceso" className="mt-7" />
+              <PaymentButton href={paymentHref} label="¡Inscribirme ya!" className="mt-7" />
             </div>
 
             <div className="grid gap-3">
@@ -162,7 +162,7 @@ export default function PapaPrimerizoPagoLanding() {
               ))}
             </div>
             <div className="mt-7">
-              <PaymentButton href={paymentHref} label="Pagar el curso ahora" />
+              <PaymentButton href={paymentHref} label="¡Inscribirme ya!" />
             </div>
           </div>
         </section>
@@ -184,17 +184,7 @@ export default function PapaPrimerizoPagoLanding() {
             <PaymentButton href={paymentHref} label="¡Inscribirme ya!" />
           </div>
         </section>
-        <section className="px-4 pb-28 pt-2 md:px-8 md:pb-10">
-          <div className="mx-auto flex max-w-[1120px] flex-col gap-4 border-t border-white/10 pt-6 text-sm text-zinc-400 md:flex-row md:items-center md:justify-between">
-            <p>© 2026 DocLevel · Educación médica digital.</p>
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-[#4ee7ef]" aria-label="Información legal de DocLevel">
-              <span>Aviso legal</span>
-              <span>Política de privacidad</span>
-              <span>Política de cookies</span>
-              <span>Términos y condiciones</span>
-            </div>
-          </div>
-        </section>      </main>
+      </main>
       <div className="fixed inset-x-0 bottom-0 z-[60] border-t border-[#4ee7ef]/30 bg-[#020711]/95 p-3 shadow-[0_-12px_28px_rgba(0,0,0,0.45)] backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md items-center gap-3">
           <div className="min-w-0">
