@@ -187,11 +187,11 @@ export default function PapaPrimerizoPagoLanding() {
         <section className="px-4 pb-28 pt-2 md:px-8 md:pb-10">
           <div className="mx-auto flex max-w-[1120px] flex-col gap-4 border-t border-white/10 pt-6 text-sm text-zinc-400 md:flex-row md:items-center md:justify-between">
             <p>© 2026 DocLevel · Educación médica digital.</p>
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-[#4ee7ef]">
-              <Link href="/aviso-legal" className="hover:text-white">Aviso legal</Link>
-              <Link href="/privacidad" className="hover:text-white">Política de privacidad</Link>
-              <Link href="/cookies" className="hover:text-white">Política de cookies</Link>
-              <Link href="/terminos" className="hover:text-white">Términos y condiciones</Link>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-[#4ee7ef]" aria-label="Información legal de DocLevel">
+              <span>Aviso legal</span>
+              <span>Política de privacidad</span>
+              <span>Política de cookies</span>
+              <span>Términos y condiciones</span>
             </div>
           </div>
         </section>      </main>
