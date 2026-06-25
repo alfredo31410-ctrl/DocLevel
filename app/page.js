@@ -86,7 +86,7 @@ export default async function HomePage() {
                 )}
                 <div className="flex flex-wrap gap-3">
                   <Link
-                      href="/pagina-de-pago/papa-primerizo-inscripcion"
+                      href="/landings/papa-primerizo-inscripcion"
                     className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#119ff3] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#119ff3]/20 transition hover:bg-[#38b6ff] sm:px-6"
                   >
                     <Play className="h-4 w-4 fill-white" /> Ver curso

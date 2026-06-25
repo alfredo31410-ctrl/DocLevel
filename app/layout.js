@@ -1,6 +1,5 @@
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
-import ConsentModal from '@/components/ConsentModal';
 
 export const metadata = {
   title: 'DocLevel - Cursos médicos impartidos por especialistas',
@@ -20,7 +19,6 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
         {children}
-        <ConsentModal />
         <Toaster position="top-right" theme="dark" />
       </body>
     </html>
