@@ -33,10 +33,6 @@ export function middleware(request) {
   const user = process.env.ADMIN_EMAIL?.trim();
   const password = process.env.ADMIN_PASSWORD?.trim();
 
-  if (!user || !password) {
-    return NextResponse.next();
-  }
-
   const basicAuth = request.headers.get('authorization');
 
   if (basicAuth?.startsWith('Basic ')) {
