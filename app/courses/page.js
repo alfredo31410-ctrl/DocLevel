@@ -165,7 +165,7 @@ function CourseGridCard({ course }) {
   return (
   <Link
     href={
-      course.title === 'Las Primeras Horas de tu Bebé'
+      course.id === '048a3d70-3e78-4939-bc37-b61f1a8b3445'
         ? '/landings/papa-primerizo-inscripcion'
         : `/courses/${course.id}`
     }

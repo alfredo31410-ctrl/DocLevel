@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Las Primeras Horas de tu Bebé | DocLevel',
+  title: 'Primer Mes de tu Bebé Paso a Paso | DocLevel',
   description:
     'Curso de pago para papás primerizos sobre cuidados esenciales del bebé desde el nacimiento. Inversión: $487 MXN.',
 };
@@ -88,7 +88,7 @@ export default function PapaPrimerizoPagoLanding() {
               <div className="overflow-hidden rounded-sm border border-[#119ff3]/25 bg-black/35">
                 <img
                   src="/brand/Copia de BANNER - CAMPAÑA.png"
-                  alt="Curso Las Primeras Horas de tu Bebé"
+                  alt="Curso Primer Mes de tu Bebé Paso a Paso"
                   className="aspect-[16/10] w-full bg-[#06111d] object-contain object-center"
                 />
               </div>
