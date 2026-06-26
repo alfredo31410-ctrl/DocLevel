@@ -1,4 +1,17 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
+
+function decodeBasicAuth(value) {
+  const encoded = value.split(' ')[1];
+  const bytes = Uint8Array.from(atob(encoded), (char) => char.charCodeAt(0));
+  const decoded = new TextDecoder().decode(bytes);
+  const separatorIndex = decoded.indexOf(':');
+
+  if (separatorIndex === -1) {
+    return ['', ''];
+  }
+
+  return [decoded.slice(0, separatorIndex), decoded.slice(separatorIndex + 1)];
+}
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
@@ -17,16 +30,20 @@ export function middleware(request) {
     return new NextResponse(null, { status: 204 });
   }
 
+  const user = process.env.ADMIN_EMAIL?.trim();
+  const password = process.env.ADMIN_PASSWORD?.trim();
+
+  if (!user || !password) {
+    return NextResponse.next();
+  }
+
   const basicAuth = request.headers.get('authorization');
-  const user = process.env.ADMIN_EMAIL;
-  const password = process.env.ADMIN_PASSWORD;
 
   if (basicAuth?.startsWith('Basic ')) {
     try {
-      const authValue = basicAuth.split(' ')[1];
-      const [inputUser, inputPassword] = atob(authValue).split(':');
+      const [inputUser, inputPassword] = decodeBasicAuth(basicAuth);
 
-      if (inputUser === user && inputPassword === password) {
+      if (inputUser.trim() === user && inputPassword.trim() === password) {
         return NextResponse.next();
       }
     } catch (error) {
@@ -37,7 +54,7 @@ export function middleware(request) {
   return new NextResponse(null, {
     status: 401,
     headers: {
-      'WWW-Authenticate': 'Basic realm="DocLevel Admin"',
+      'WWW-Authenticate': 'Basic realm="DocLevel Admin", charset="UTF-8"',
     },
   });
 }
