@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar';
 import SiteFooter from '@/components/SiteFooter';
 import Link from 'next/link';
 import { ArrowLeft, CalendarCheck, Clock, HeartPulse, ShieldCheck, UserRound } from 'lucide-react';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { getDb } from '@/lib/mongodb';
 import { fallbackCourses, normalizeCourse } from '@/lib/courseCatalog';
 
@@ -36,6 +36,10 @@ async function getRelated(category, excludeId) {
 }
 
 export default async function CoursePage({ params }) {
+  if (params.id === '048a3d70-3e78-4939-bc37-b61f1a8b3445') {
+    redirect('/landings/papa-primerizo-inscripcion');
+  }
+
   const course = await getCourse(params.id);
 
   if (!course) {
