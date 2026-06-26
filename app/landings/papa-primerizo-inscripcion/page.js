@@ -110,10 +110,11 @@ export default function PapaPrimerizoPagoLanding() {
         </section>
 
         <section className="px-4 py-12 md:px-8">
-          <div className="mx-auto grid max-w-[1120px] gap-4 md:grid-cols-4">
+          <div className="mx-auto grid max-w-[1120px] gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <InfoCard icon={<Stethoscope className="h-6 w-6" />} label="Experto" value="Dr. Raúl G. de Lira López" />
             <InfoCard icon={<CalendarCheck className="h-6 w-6" />} label="Fechas" value="1, 2 y 3 de julio del 2026" />
             <InfoCard icon={<PlayCircle className="h-6 w-6" />} label="En vivo" value="2 horas diarias" />
+            <InfoCard icon={<CalendarCheck className="h-6 w-6" />} label="Acceso" value="Grabaciones disponibles durante 1 año" />
             <InfoCard icon={<ShieldCheck className="h-6 w-6" />} label="Precio" value="$487 MXN" />
           </div>
           <div className="mx-auto mt-6 max-w-[1120px]">
@@ -240,3 +241,4 @@ function InfoCard({ icon, label, value }) {
     </div>
   );
 }
+
