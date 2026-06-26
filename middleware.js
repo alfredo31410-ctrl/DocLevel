@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
 
-function decodeBasicAuth(value) {
-  const encoded = value.split(' ')[1];
-  const bytes = Uint8Array.from(atob(encoded), (char) => char.charCodeAt(0));
-  const decoded = new TextDecoder().decode(bytes);
+function splitCredentials(decoded) {
   const separatorIndex = decoded.indexOf(':');
 
   if (separatorIndex === -1) {
@@ -11,6 +8,22 @@ function decodeBasicAuth(value) {
   }
 
   return [decoded.slice(0, separatorIndex), decoded.slice(separatorIndex + 1)];
+}
+
+function decodeBasicAuth(value) {
+  const encoded = value.split(' ')[1];
+  const bytes = Uint8Array.from(atob(encoded), (char) => char.charCodeAt(0));
+  const decodedValues = [];
+
+  try {
+    decodedValues.push(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
+  } catch (error) {
+    // Some browsers or password managers can still submit Basic Auth as Latin-1.
+  }
+
+  decodedValues.push(new TextDecoder('iso-8859-1').decode(bytes));
+
+  return [...new Set(decodedValues)].map(splitCredentials);
 }
 
 export function middleware(request) {
@@ -30,16 +43,18 @@ export function middleware(request) {
     return new NextResponse(null, { status: 204 });
   }
 
-  const user = process.env.ADMIN_EMAIL?.trim();
+  const user = process.env.ADMIN_EMAIL?.toLowerCase().trim();
   const password = process.env.ADMIN_PASSWORD?.trim();
-
   const basicAuth = request.headers.get('authorization');
 
-  if (basicAuth?.startsWith('Basic ')) {
+  if (basicAuth?.startsWith('Basic ') && user && password) {
     try {
-      const [inputUser, inputPassword] = decodeBasicAuth(basicAuth);
+      const credentials = decodeBasicAuth(basicAuth);
+      const isAuthorized = credentials.some(([inputUser, inputPassword]) => {
+        return inputUser.toLowerCase().trim() === user && inputPassword.trim() === password;
+      });
 
-      if (inputUser.trim() === user && inputPassword.trim() === password) {
+      if (isAuthorized) {
         return NextResponse.next();
       }
     } catch (error) {
