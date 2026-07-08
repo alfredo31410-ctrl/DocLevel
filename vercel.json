@@ -1,12 +1,25 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/landings/assets/:path*",
+      "destination": "https://doclevel-landings.vercel.app/landings/assets/:path*"
+    },
+    {
       "source": "/landings/papa-primerizo",
-      "destination": "https://doclevel-landings.vercel.app"
+      "destination": "https://doclevel-landings.vercel.app/landings/papa-primerizo"
     },
     {
       "source": "/landings/papa-primerizo/:path*",
-      "destination": "https://doclevel-landings.vercel.app/:path*"
+      "destination": "https://doclevel-landings.vercel.app/landings/papa-primerizo/:path*"
+    },
+    {
+      "source": "/medicos-docentes",
+      "destination": "https://doclevel-landings.vercel.app/medicos-docentes"
+    },
+    {
+      "source": "/medicos-docentes/:path*",
+      "destination": "https://doclevel-landings.vercel.app/medicos-docentes/:path*"
     }
   ]
 }
