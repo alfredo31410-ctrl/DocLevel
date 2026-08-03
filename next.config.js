@@ -22,18 +22,34 @@ const nextConfig = {
     maxInactiveAge: 10000,
     pagesBufferLength: 2,
   },
-  async rewrites() {
-    return [
-      {
-        source: "/landings/papa-primerizo",
-        destination: "https://doclevel-landings.vercel.app",
-      },
-      {
-        source: "/landings/papa-primerizo/:path*",
-        destination: "https://doclevel-landings.vercel.app/:path*",
-      },
-    ];
-  },
+async rewrites() {
+  return [
+    {
+      source: "/landings/assets/:path*",
+      destination:
+        "https://doclevel-landings.vercel.app/landings/assets/:path*",
+    },
+    {
+      source: "/landings/ENARM",
+      destination:
+        "https://doclevel-landings.vercel.app/landings/ENARM",
+    },
+    {
+      source: "/landings/ENARM/:path*",
+      destination:
+        "https://doclevel-landings.vercel.app/landings/ENARM/:path*",
+    },
+    {
+      source: "/landings/papa-primerizo",
+      destination: "https://doclevel-landings.vercel.app",
+    },
+    {
+      source: "/landings/papa-primerizo/:path*",
+      destination:
+        "https://doclevel-landings.vercel.app/:path*",
+    },
+  ];
+},
   async headers() {
     return [
       {
