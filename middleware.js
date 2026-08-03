@@ -65,7 +65,7 @@ export function middleware(request) {
   return new NextResponse(null, {
     status: 401,
     headers: {
-      'WWW-Authenticate': 'Basic realm="DocLevel Admin", charset="UTF-8"',
+      'WWW-Authenticate': 'Basic realm="Voxing academy Admin", charset="UTF-8"',
     },
   });
 }

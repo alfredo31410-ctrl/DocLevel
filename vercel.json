@@ -6,6 +6,14 @@
       "destination": "https://doclevel-landings.vercel.app/landings/assets/:path*"
     },
     {
+      "source": "/landings/ENARM",
+      "destination": "https://doclevel-landings.vercel.app/landings/ENARM"
+    },
+    {
+      "source": "/landings/ENARM/:path*",
+      "destination": "https://doclevel-landings.vercel.app/landings/ENARM/:path*"
+    },
+    {
       "source": "/landings/papa-primerizo",
       "destination": "https://doclevel-landings.vercel.app/landings/papa-primerizo"
     },
