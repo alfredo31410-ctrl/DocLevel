@@ -22,6 +22,14 @@
       "destination": "https://doclevel-landings.vercel.app/landings/papa-primerizo/:path*"
     },
     {
+      "source": "/landings/las-primeras-hrs-de-tu-bebe",
+      "destination": "https://doclevel-landings.vercel.app/landings/las-primeras-hrs-de-tu-bebe"
+    },
+    {
+      "source": "/landings/las-primeras-hrs-de-tu-bebe/:path*",
+      "destination": "https://doclevel-landings.vercel.app/landings/las-primeras-hrs-de-tu-bebe/:path*"
+    },
+    {
       "source": "/medicos-docentes",
       "destination": "https://doclevel-landings.vercel.app/medicos-docentes"
     },
