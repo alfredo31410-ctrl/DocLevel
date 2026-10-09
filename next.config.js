@@ -25,28 +25,12 @@ const nextConfig = {
 async rewrites() {
   return [
     {
-      source: "/landings/assets/:path*",
-      destination:
-        "https://doclevel-landings.vercel.app/landings/assets/:path*",
+      source: "/landings",
+      destination: "https://doclevel-landings.vercel.app/landings",
     },
     {
-      source: "/landings/ENARM",
-      destination:
-        "https://doclevel-landings.vercel.app/landings/ENARM",
-    },
-    {
-      source: "/landings/ENARM/:path*",
-      destination:
-        "https://doclevel-landings.vercel.app/landings/ENARM/:path*",
-    },
-    {
-      source: "/landings/papa-primerizo",
-      destination: "https://doclevel-landings.vercel.app",
-    },
-    {
-      source: "/landings/papa-primerizo/:path*",
-      destination:
-        "https://doclevel-landings.vercel.app/:path*",
+      source: "/landings/:path*",
+      destination: "https://doclevel-landings.vercel.app/landings/:path*",
     },
   ];
 },

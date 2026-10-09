@@ -2,32 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/landings/assets/:path*",
-      "destination": "https://doclevel-landings.vercel.app/landings/assets/:path*"
+      "source": "/landings",
+      "destination": "https://doclevel-landings.vercel.app/landings"
     },
     {
-      "source": "/landings/ENARM",
-      "destination": "https://doclevel-landings.vercel.app/landings/ENARM"
-    },
-    {
-      "source": "/landings/ENARM/:path*",
-      "destination": "https://doclevel-landings.vercel.app/landings/ENARM/:path*"
-    },
-    {
-      "source": "/landings/papa-primerizo",
-      "destination": "https://doclevel-landings.vercel.app/landings/papa-primerizo"
-    },
-    {
-      "source": "/landings/papa-primerizo/:path*",
-      "destination": "https://doclevel-landings.vercel.app/landings/papa-primerizo/:path*"
-    },
-    {
-      "source": "/landings/las-primeras-hrs-de-tu-bebe",
-      "destination": "https://doclevel-landings.vercel.app/landings/las-primeras-hrs-de-tu-bebe"
-    },
-    {
-      "source": "/landings/las-primeras-hrs-de-tu-bebe/:path*",
-      "destination": "https://doclevel-landings.vercel.app/landings/las-primeras-hrs-de-tu-bebe/:path*"
+      "source": "/landings/:path*",
+      "destination": "https://doclevel-landings.vercel.app/landings/:path*"
     },
     {
       "source": "/medicos-docentes",
